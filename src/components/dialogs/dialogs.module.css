@@ -1,1 +1,21 @@
+.dialogs {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+}
 
+.dialogItems {
+  padding: 10px;
+}
+
+.dialog {
+  line-height: 2rem;
+  color: wheat;
+}
+
+.messages {
+  padding: 10px;
+}
+
+.message {
+  line-height: 2rem;
+}
