@@ -4,16 +4,20 @@
 }
 
 .dialogItems {
-  padding: 10px;
+  padding: 1rem;
 }
 
 .dialog {
   line-height: 2rem;
   color: wheat;
 }
+.dialog a {
+  color: whitesmoke;
+  text-decoration: none;
+}
 
 .messages {
-  padding: 10px;
+  padding: 1rem;
 }
 
 .message {
