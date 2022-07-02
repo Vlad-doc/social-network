@@ -2,11 +2,7 @@ import React from "react"
 import postsStyle from "./myPosts.module.css"
 import Post from "./post/post"
 
-function MyPosts() {
-  const posts = [
-    { id: 1, message: "Hello", likeCount: 5 },
-    { id: 2, message: "My first post", likeCount: 20 },
-  ]
+function MyPosts({ posts }) {
   return (
     <div className={postsStyle.postsBlock}>
       <h3>My posts</h3>
@@ -21,6 +17,7 @@ function MyPosts() {
       <div className={postsStyle.posts}>
         {posts.map((post) => (
           <Post
+            key={post.id}
             id={post.id}
             message={post.message}
             likesCount={post.likeCount}
