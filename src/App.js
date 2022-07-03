@@ -7,17 +7,20 @@ import Profile from "./components/profile/profile"
 import { News } from "./components/news/news"
 import { Music } from "./components/music/music"
 
-const App = ({ posts, dialogs, messages }) => {
+const App = ({ state }) => {
   return (
     <div className="wrapper">
       <Header />
       <Navbar />
       <div className="wrapper-content">
         <Routes>
-          <Route path="/profile" element={<Profile posts={posts} />} />
+          <Route
+            path="/profile"
+            element={<Profile state={state.profilePage} />}
+          />
           <Route
             path="/dialogs"
-            element={<Dialogs dialogs={dialogs} messages={messages} />}
+            element={<Dialogs state={state.dialogsPage} />}
           />
           <Route path="/news" element={<News />} />
           <Route path="/music" element={<Music />} />
