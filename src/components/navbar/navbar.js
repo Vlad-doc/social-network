@@ -1,8 +1,9 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
+import { Friends } from "./friends/friends"
 import navStyle from "./navbar.module.css"
 
-function Navbar() {
+function Navbar({ state }) {
   let activeClass = ({ isActive }) =>
     isActive ? `${navStyle.active}` : `${navStyle.item}`
   return (
@@ -28,9 +29,15 @@ function Navbar() {
         </NavLink>
       </div>
       <div className={navStyle.item}>
-        <NavLink to="/" className={activeClass}>
+        <NavLink to="/settings" className={activeClass}>
           Settings
         </NavLink>
+      </div>
+      <h4>Friends</h4>
+      <div className={navStyle.item__friends}>
+        {state.friends.map((friend) => (
+          <Friends key={friend.id} id={`${friend.id}`} friend={friend} />
+        ))}
       </div>
     </nav>
   )

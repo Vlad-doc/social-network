@@ -13,3 +13,19 @@
 .item a.active {
   color: gold;
 }
+
+.item__friends {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+
+.item__friends_friend {
+  margin-bottom: 1rem;
+  width: calc(100% / 3);
+  text-align: center;
+  font-size: 12px;
+}
+.item__friends_friend img {
+  width: 30px;
+}

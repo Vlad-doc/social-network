@@ -8,18 +8,36 @@
 }
 
 .dialog {
-  line-height: 2rem;
-  color: wheat;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-top: 1rem;
+}
+.dialog img {
+  width: 50px;
 }
 .dialog a {
   color: whitesmoke;
   text-decoration: none;
+  margin-left: 10px;
 }
 
 .messages {
+  width: 500px;
   padding: 1rem;
 }
 
+.message:nth-child(even) {
+  margin-left: auto;
+}
+
 .message {
-  line-height: 2rem;
+  box-sizing: border-box;
+  height: 50px;
+  width: 200px;
+  border: 2px solid green;
+  border-radius: 10%;
+  margin-top: 1rem;
+  padding: 10px;
+  line-height: 25px;
 }

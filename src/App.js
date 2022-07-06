@@ -6,12 +6,13 @@ import Navbar from "./components/navbar/navbar"
 import Profile from "./components/profile/profile"
 import { News } from "./components/news/news"
 import { Music } from "./components/music/music"
+import { Settings } from "./components/tuning/settings"
 
 const App = ({ state }) => {
   return (
     <div className="wrapper">
       <Header />
-      <Navbar />
+      <Navbar state={state.friendsPage} />
       <div className="wrapper-content">
         <Routes>
           <Route
@@ -24,6 +25,7 @@ const App = ({ state }) => {
           />
           <Route path="/news" element={<News />} />
           <Route path="/music" element={<Music />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </div>
     </div>

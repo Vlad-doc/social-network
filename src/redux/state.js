@@ -3,6 +3,8 @@ const state = {
     posts: [
       { id: 1, message: "Hello", likeCount: 5 },
       { id: 2, message: "My first post", likeCount: 20 },
+      { id: 3, message: "Yo Yo Yo", likeCount: 55 },
+      { id: 4, message: "Bye", likeCount: 1 },
     ],
   },
   dialogsPage: {
@@ -13,10 +15,61 @@ const state = {
       { id: 4, message: "YO" },
     ],
     dialogs: [
-      { id: 1, name: "Valera" },
-      { id: 2, name: "Anton" },
-      { id: 3, name: "Alex" },
-      { id: 4, name: "Mikhail" },
+      {
+        id: 1,
+        name: "Valera",
+        avatar:
+          "https://findicons.com/files/icons/1072/face_avatars/300/i03.png",
+      },
+      {
+        id: 2,
+        name: "Anton",
+        avatar:
+          "https://findicons.com/files/icons/1072/face_avatars/300/i03.png",
+      },
+      {
+        id: 3,
+        name: "Alex",
+        avatar:
+          "https://findicons.com/files/icons/1072/face_avatars/300/i03.png",
+      },
+      {
+        id: 4,
+        name: "Mikhail",
+        avatar:
+          "https://findicons.com/files/icons/1072/face_avatars/300/i03.png",
+      },
+    ],
+  },
+  friendsPage: {
+    friends: [
+      {
+        id: 1,
+        name: "Vlad",
+        avatar: "https://pngicon.ru/file/uploads/2_16.png",
+      },
+      {
+        id: 2,
+        name: "Kseniya",
+        avatar:
+          "https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Images-HD.png",
+      },
+      {
+        id: 3,
+        name: "Artem",
+        avatar: "https://pngicon.ru/file/uploads/2_16.png",
+      },
+      {
+        id: 4,
+        name: "Lena",
+        avatar:
+          "https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Images-HD.png",
+      },
+      {
+        id: 5,
+        name: "Bill",
+        avatar: "https://pngicon.ru/file/uploads/2_16.png",
+      },
     ],
   },
 }

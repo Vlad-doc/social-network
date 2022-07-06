@@ -8,7 +8,13 @@ function Dialogs({ state }) {
     <div className={dialogsStyle.dialogs}>
       <div className={dialogsStyle.dialogItems}>
         {state.dialogs.map((dialog) => (
-          <DialogItem name={dialog.name} id={`${dialog.id}`} key={dialog.id} />
+          <DialogItem
+            id={`${dialog.id}`}
+            key={dialog.id}
+            // avatar={dialog.avatar}
+            // name={dialog.name}
+            profile={dialog}
+          />
         ))}
       </div>
       <div className={dialogsStyle.messages}>
