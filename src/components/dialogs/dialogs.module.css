@@ -41,3 +41,11 @@
   padding: 10px;
   line-height: 25px;
 }
+
+.textArea {
+  margin-top: 40px;
+}
+
+.textArea button {
+  display: block;
+}

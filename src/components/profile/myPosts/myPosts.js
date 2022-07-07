@@ -1,21 +1,31 @@
-import React from "react"
+import React, { createRef } from "react"
 import postsStyle from "./myPosts.module.css"
 import Post from "./post/post"
 
-function MyPosts({ posts }) {
+function MyPosts({ state, addPost }) {
+  const createPost = () => {
+    addPost(newPostElement.current.value)
+    newPostElement.current.value = ""
+  }
+  const onPostChange = () => {}
+  const newPostElement = createRef()
   return (
     <div className={postsStyle.postsBlock}>
       <h3>My posts</h3>
       <div>
         <div>
-          <textarea name="" id="" cols="20" rows="2"></textarea>
+          <textarea
+            ref={newPostElement}
+            value={state.newPostText}
+            onChange={onPostChange}
+          />
         </div>
         <div>
-          <button>Add post</button>
+          <button onClick={createPost}>Add post</button>
         </div>
       </div>
       <div className={postsStyle.posts}>
-        {posts.map((post) => (
+        {state.posts.map((post) => (
           <Post
             key={post.id}
             id={post.id}
@@ -23,8 +33,6 @@ function MyPosts({ posts }) {
             likesCount={post.likeCount}
           />
         ))}
-        {/* <Post message="Hello" likesCount="20" />
-        <Post message="My first post" likesCount="15" /> */}
       </div>
     </div>
   )
