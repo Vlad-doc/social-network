@@ -8,7 +8,7 @@ import { News } from "./components/news/news"
 import { Music } from "./components/music/music"
 import { Settings } from "./components/tuning/settings"
 
-const App = ({ state, addPost }) => {
+const App = ({ state, addPost, updateNewPostText }) => {
   return (
     <div className="wrapper">
       <Header />
@@ -17,7 +17,13 @@ const App = ({ state, addPost }) => {
         <Routes>
           <Route
             path="/profile"
-            element={<Profile state={state.profilePage} addPost={addPost} />}
+            element={
+              <Profile
+                state={state.profilePage}
+                addPost={addPost}
+                updateNewPostText={updateNewPostText}
+              />
+            }
           />
           <Route
             path="/dialogs"

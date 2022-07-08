@@ -78,13 +78,18 @@ const state = {
   },
 }
 
-export const addPost = (message) => {
+export const addPost = () => {
   state.profilePage.posts.push({
     id: state.profilePage.posts[state.profilePage.posts.length - 1].id + 1,
-    message,
+    message: state.profilePage.newPostText,
     likeCount: 0,
   })
   rerenderEntireTree(state)
+  updateNewPostText("")
 }
 
+export const updateNewPostText = (newText) => {
+  state.profilePage.newPostText = newText
+  rerenderEntireTree(state)
+}
 export default state

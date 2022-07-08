@@ -2,12 +2,13 @@ import React, { createRef } from "react"
 import postsStyle from "./myPosts.module.css"
 import Post from "./post/post"
 
-function MyPosts({ state, addPost }) {
-  const createPost = () => {
-    addPost(newPostElement.current.value)
-    newPostElement.current.value = ""
+function MyPosts({ state, addPost, updateNewPostText }) {
+  const createPost = () => addPost()
+
+  const onPostChange = () => {
+    updateNewPostText(newPostElement.current.value)
+    console.log(newPostElement.current.value)
   }
-  const onPostChange = () => {}
   const newPostElement = createRef()
   return (
     <div className={postsStyle.postsBlock}>
