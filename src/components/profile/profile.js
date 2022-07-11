@@ -3,15 +3,11 @@ import MyPosts from "./myPosts/myPosts"
 import { ProfileInfo } from "./profileInfo/profileInfo"
 import profStyle from "./profile.module.css"
 
-function Profile({ state, addPost, updateNewPostText }) {
+function Profile({ state, dispatch }) {
   return (
     <div className={profStyle.content}>
       <ProfileInfo />
-      <MyPosts
-        state={state}
-        addPost={addPost}
-        updateNewPostText={updateNewPostText}
-      />
+      <MyPosts state={state} dispatch={dispatch} />
     </div>
   )
 }

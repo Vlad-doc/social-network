@@ -53,13 +53,13 @@ const store = {
         },
         {
           id: 2,
-          name: "Kseniya",
+          name: "Julia",
           avatar:
             "https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Images-HD.png",
         },
         {
           id: 3,
-          name: "Artem",
+          name: "Kris",
           avatar: "https://pngicon.ru/file/uploads/2_16.png",
         },
         {
@@ -76,32 +76,31 @@ const store = {
       ],
     },
   },
-
   _callSubscriber() {},
 
+  subscribe(observe) {
+    this._callSubscriber = observe
+  },
   getState() {
     return this._state
   },
 
-  addPost() {
-    this._state.profilePage.posts.push({
-      id:
-        this._state.profilePage.posts[this._state.profilePage.posts.length - 1]
-          .id + 1,
-      message: this._state.profilePage.newPostText,
-      likeCount: 0,
-    })
-    this._callSubscriber(this._state)
-    this.updateNewPostText("")
-  },
-
-  updateNewPostText(newText) {
-    this._state.profilePage.newPostText = newText
-    this._callSubscriber(this._state)
-  },
-
-  subscribe(observe) {
-    this._callSubscriber = observe
+  dispatch(action) {
+    if (action.type === "ADD-POST") {
+      this._state.profilePage.posts.push({
+        id:
+          this._state.profilePage.posts[
+            this._state.profilePage.posts.length - 1
+          ].id + 1,
+        message: this._state.profilePage.newPostText,
+        likeCount: 0,
+      })
+      this._callSubscriber(this._state)
+      this._state.profilePage.newPostText = ""
+    } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+      this._state.profilePage.newPostText = action.newText
+      this._callSubscriber(this._state)
+    }
   },
 }
 

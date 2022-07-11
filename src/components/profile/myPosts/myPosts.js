@@ -2,14 +2,16 @@ import React, { createRef } from "react"
 import postsStyle from "./myPosts.module.css"
 import Post from "./post/post"
 
-function MyPosts({ state, addPost, updateNewPostText }) {
+function MyPosts({ state, dispatch }) {
   const createPost = () => {
-    addPost()
+    dispatch({ type: "ADD-POST" })
   }
 
   const onPostChange = () => {
-    updateNewPostText(newPostElement.current.value)
-    console.log(newPostElement.current.value)
+    dispatch({
+      type: "UPDATE-NEW-POST-TEXT",
+      newText: newPostElement.current.value,
+    })
   }
   const newPostElement = createRef()
   return (
