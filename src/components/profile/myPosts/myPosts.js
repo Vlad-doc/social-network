@@ -3,7 +3,9 @@ import postsStyle from "./myPosts.module.css"
 import Post from "./post/post"
 
 function MyPosts({ state, addPost, updateNewPostText }) {
-  const createPost = () => addPost()
+  const createPost = () => {
+    addPost()
+  }
 
   const onPostChange = () => {
     updateNewPostText(newPostElement.current.value)
