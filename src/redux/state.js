@@ -1,5 +1,7 @@
 const ADD_POST = "ADD-POST"
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
+const NEW_MESSAGE = "NEW-MESSAGE"
+const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT"
 
 const store = {
   _state: {
@@ -46,6 +48,7 @@ const store = {
             "https://findicons.com/files/icons/1072/face_avatars/300/i03.png",
         },
       ],
+      defaultText: "Enter message",
     },
     friendsPage: {
       friends: [
@@ -103,6 +106,19 @@ const store = {
     } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.profilePage.newPostText = action.newText
       this._callSubscriber(this._state)
+    } else if (action.type === NEW_MESSAGE) {
+      this._state.dialogsPage.messages.push({
+        id:
+          this._state.dialogsPage.messages[
+            this._state.dialogsPage.messages.length - 1
+          ].id + 1,
+        message: this._state.dialogsPage.defaultText,
+      })
+      this._callSubscriber(this._state)
+      this._state.dialogsPage.defaultText = ""
+    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
+      this._state.dialogsPage.defaultText = action.newMessage
+      this._callSubscriber(this._state)
     }
   },
 }
@@ -110,10 +126,16 @@ const store = {
 export const addPostActionCreator = () => ({
   type: ADD_POST,
 })
-
 export const changePostActionCreator = (text) => ({
   type: UPDATE_NEW_POST_TEXT,
   newText: text,
+})
+export const addNewMessageActionCreator = () => ({
+  type: NEW_MESSAGE,
+})
+export const newMessageTextActionCreator = (text) => ({
+  type: UPDATE_NEW_MESSAGE_TEXT,
+  newMessage: text,
 })
 
 export default store
