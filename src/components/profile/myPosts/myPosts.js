@@ -1,18 +1,17 @@
 import React, { createRef } from "react"
+import {
+  addPostActionCreator,
+  changePostActionCreator,
+} from "../../../redux/state"
 import postsStyle from "./myPosts.module.css"
 import Post from "./post/post"
 
 function MyPosts({ state, dispatch }) {
-  const createPost = () => {
-    dispatch({ type: "ADD-POST" })
-  }
+  const createPost = () => dispatch(addPostActionCreator())
 
-  const onPostChange = () => {
-    dispatch({
-      type: "UPDATE-NEW-POST-TEXT",
-      newText: newPostElement.current.value,
-    })
-  }
+  const onPostChange = () =>
+    dispatch(changePostActionCreator(newPostElement.current.value))
+
   const newPostElement = createRef()
   return (
     <div className={postsStyle.postsBlock}>
