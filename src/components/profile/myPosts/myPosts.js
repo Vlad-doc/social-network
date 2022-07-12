@@ -1,16 +1,16 @@
 import React, { createRef } from "react"
 import {
-  addPostActionCreator,
-  changePostActionCreator,
-} from "../../../redux/state"
+  addPostCreator,
+  changePostCreator,
+} from "../../../redux/profileReducer"
 import postsStyle from "./myPosts.module.css"
 import Post from "./post/post"
 
 function MyPosts({ state, dispatch }) {
-  const createPost = () => dispatch(addPostActionCreator())
+  const createPost = () => dispatch(addPostCreator())
 
   const onPostChange = () =>
-    dispatch(changePostActionCreator(newPostElement.current.value))
+    dispatch(changePostCreator(newPostElement.current.value))
 
   const newPostElement = createRef()
   return (

@@ -1,19 +1,18 @@
-import React, { createRef } from "react"
+import React from "react"
 import dialogsStyle from "./dialogs.module.css"
 import { DialogItem } from "./dialogItem/dialogItem"
 import { Message } from "./message/message"
 import {
-  addNewMessageActionCreator,
-  newMessageTextActionCreator,
-} from "../../redux/state"
+  sendMessageCreator,
+  newMessageCreator,
+} from "../../redux/dialogsReducer"
 
 function Dialogs({ state, dispatch }) {
   const sendMessage = () => {
-    dispatch(addNewMessageActionCreator())
+    dispatch(sendMessageCreator())
   }
-  const newMessage = createRef()
-  const onMessageChange = () => {
-    dispatch(newMessageTextActionCreator(newMessage.current.value))
+  const onMessageChange = (e) => {
+    dispatch(newMessageCreator(e.target.value))
   }
   return (
     <div className={dialogsStyle.dialogs}>
@@ -28,9 +27,9 @@ function Dialogs({ state, dispatch }) {
         ))}
         <div className={dialogsStyle.textArea}>
           <textarea
-            ref={newMessage}
-            value={state.defaultText}
+            value={state.newMessageText}
             onChange={onMessageChange}
+            placeholder="Enter your message"
           />
           <button onClick={sendMessage}>Send</button>
         </div>
