@@ -1,16 +1,11 @@
 import React, { createRef } from "react"
-import {
-  addPostCreator,
-  changePostCreator,
-} from "../../../redux/profileReducer"
 import postsStyle from "./myPosts.module.css"
 import Post from "./post/post"
 
-function MyPosts({ state, dispatch }) {
-  const createPost = () => dispatch(addPostCreator())
+function MyPosts({ posts, newPostText, updateNewPostText, addPost }) {
+  const createPost = () => addPost()
 
-  const onPostChange = () =>
-    dispatch(changePostCreator(newPostElement.current.value))
+  const onPostChange = () => updateNewPostText(newPostElement.current.value)
 
   const newPostElement = createRef()
   return (
@@ -20,7 +15,7 @@ function MyPosts({ state, dispatch }) {
         <div>
           <textarea
             ref={newPostElement}
-            value={state.newPostText}
+            value={newPostText}
             onChange={onPostChange}
           />
         </div>
@@ -29,7 +24,7 @@ function MyPosts({ state, dispatch }) {
         </div>
       </div>
       <div className={postsStyle.posts}>
-        {state.posts.map((post) => (
+        {posts.map((post) => (
           <Post
             key={post.id}
             id={post.id}

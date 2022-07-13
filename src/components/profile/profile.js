@@ -1,13 +1,13 @@
 import React from "react"
-import MyPosts from "./myPosts/myPosts"
 import { ProfileInfo } from "./profileInfo/profileInfo"
 import profStyle from "./profile.module.css"
+import MyPostsContainer from "./myPosts/myPostsContainer"
 
-function Profile({ state, dispatch }) {
+function Profile({ store }) {
   return (
     <div className={profStyle.content}>
       <ProfileInfo />
-      <MyPosts state={state} dispatch={dispatch} />
+      <MyPostsContainer store={store} />
     </div>
   )
 }

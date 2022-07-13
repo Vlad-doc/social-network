@@ -3,9 +3,10 @@ import { NavLink } from "react-router-dom"
 import { Friends } from "./friends/friends"
 import navStyle from "./navbar.module.css"
 
-function Navbar({ state }) {
+function Navbar({ store }) {
   let activeClass = ({ isActive }) =>
     isActive ? `${navStyle.active}` : `${navStyle.item}`
+
   return (
     <nav className={navStyle.nav}>
       <div className={navStyle.item}>
@@ -35,7 +36,7 @@ function Navbar({ state }) {
       </div>
       <h4>Friends</h4>
       <div className={navStyle.item__friends}>
-        {state.friends.map((friend) => (
+        {store.getState().friendsPage.friends.map((friend) => (
           <Friends key={friend.id} id={`${friend.id}`} friend={friend} />
         ))}
       </div>
