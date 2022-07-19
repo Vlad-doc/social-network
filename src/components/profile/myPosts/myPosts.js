@@ -17,6 +17,7 @@ function MyPosts({ posts, newPostText, updateNewPostText, addPost }) {
             ref={newPostElement}
             value={newPostText}
             onChange={onPostChange}
+            placeholder="Hello friend"
           />
         </div>
         <div>
