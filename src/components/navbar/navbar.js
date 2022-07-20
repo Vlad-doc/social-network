@@ -35,6 +35,11 @@ function Navbar(props) {
           Settings
         </NavLink>
       </div>
+      <div className={navStyle.item}>
+        <NavLink to="/users" className={activeClass}>
+          Users
+        </NavLink>
+      </div>
       <h4>Friends</h4>
       <div className={navStyle.item__friends}>
         {props.friendsPage.friends.map((friend) => (

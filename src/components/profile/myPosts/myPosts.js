@@ -1,20 +1,16 @@
-import React, { createRef } from "react"
+import React from "react"
 import postsStyle from "./myPosts.module.css"
 import Post from "./post/post"
 
 function MyPosts({ posts, newPostText, updateNewPostText, addPost }) {
   const createPost = () => addPost()
-
-  const onPostChange = () => updateNewPostText(newPostElement.current.value)
-
-  const newPostElement = createRef()
+  const onPostChange = (e) => updateNewPostText(e.target.value)
   return (
     <div className={postsStyle.postsBlock}>
       <h3>My posts</h3>
       <div>
         <div>
           <textarea
-            ref={newPostElement}
             value={newPostText}
             onChange={onPostChange}
             placeholder="Hello friend"
