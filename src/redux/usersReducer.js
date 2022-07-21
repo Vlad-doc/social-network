@@ -1,27 +1,9 @@
 const FOLLOW = "FOLLOW"
 const UN_FOLLOW = "UN_FOLLOW"
+const SET_USERS = "SET_USERS"
 
 const initialState = {
-  users: [
-    {
-      id: 1,
-      fullName: "Vlad",
-      photo:
-        "https://www.clipartmax.com/png/small/96-968075_youre-now-in-slide-show-mode-avatar-de-los-simpsons.png",
-      followed: false,
-      status: "I am a boss",
-      location: { city: "Moscow", country: "Russia" },
-    },
-    {
-      id: 2,
-      fullName: "Teo",
-      photo:
-        "https://www.clipartmax.com/png/small/96-968075_youre-now-in-slide-show-mode-avatar-de-los-simpsons.png",
-      followed: true,
-      status: "I am a cool",
-      location: { city: "Madrid", country: "Spain" },
-    },
-  ],
+  users: [],
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -40,18 +22,27 @@ const usersReducer = (state = initialState, action) => {
           user.id === action.payload ? { ...user, followed: false } : user,
         ),
       }
+    case SET_USERS:
+      return {
+        ...state,
+        users: [...state.users, ...action.payload],
+      }
     default:
       return state
   }
 }
 
-export const follow = (userId) => ({
+export const followAC = (userId) => ({
   type: FOLLOW,
   payload: userId,
 })
-export const unFollow = (userId) => ({
+export const unFollowAC = (userId) => ({
   type: UN_FOLLOW,
   payload: userId,
+})
+export const setUsersAC = (users) => ({
+  type: SET_USERS,
+  payload: users,
 })
 
 export default usersReducer
