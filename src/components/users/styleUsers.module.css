@@ -4,6 +4,11 @@
   margin: 25px 50px;
 }
 
+.list span:nth-child(2) {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
 .buttonBlock {
   flex: 1;
 }
