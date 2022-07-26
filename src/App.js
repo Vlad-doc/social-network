@@ -2,12 +2,12 @@ import "./App.css"
 import { Routes, Route } from "react-router-dom"
 import Header from "./components/header/header"
 import Navbar from "./components/navbar/navbar"
-import Profile from "./components/profile/profile"
 import { News } from "./components/news/news"
 import { Music } from "./components/music/music"
 import { Settings } from "./components/tuning/settings"
 import DialogsContainer from "./components/dialogs/dialogsContainer"
 import UsersContainer from "./components/users/usersContainer"
+import ProfileContainer from "./components/profile/profileContainer"
 
 const App = () => {
   return (
@@ -16,7 +16,7 @@ const App = () => {
       <Navbar />
       <div className="wrapper-content">
         <Routes>
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<ProfileContainer />} />
           <Route path="/dialogs" element={<DialogsContainer />} />
           <Route path="/news" element={<News />} />
           <Route path="/music" element={<Music />} />
