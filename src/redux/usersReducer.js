@@ -54,27 +54,27 @@ const usersReducer = (state = initialState, action) => {
   }
 }
 
-export const followAC = (userId) => ({
+export const follow = (userId) => ({
   type: FOLLOW,
   payload: userId,
 })
-export const unFollowAC = (userId) => ({
+export const unFollow = (userId) => ({
   type: UN_FOLLOW,
   payload: userId,
 })
-export const setUsersAC = (users) => ({
+export const setUsers = (users) => ({
   type: SET_USERS,
   payload: users,
 })
-export const setCurrentPageAC = (index) => ({
+export const setCurrentPage = (index) => ({
   type: SET_CURRENT_PAGE,
   payload: index,
 })
-export const setTotalUsersCountAC = (count) => ({
+export const setTotalUsersCount = (count) => ({
   type: SET_TOTAL_USER_COUNT,
   payload: count,
 })
-export const setIsLoadingAC = (bool) => ({
+export const setIsLoading = (bool) => ({
   type: SET_LOADING,
   payload: bool,
 })
