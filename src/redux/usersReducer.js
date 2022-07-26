@@ -3,12 +3,14 @@ const UN_FOLLOW = "UN_FOLLOW"
 const SET_USERS = "SET_USERS"
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE"
 const SET_TOTAL_USER_COUNT = "SET_TOTAL_USER_COUNT"
+const SET_LOADING = "SET_LOADING"
 
 const initialState = {
   users: [],
   pageSize: 10,
   totalUsersCount: 0,
   currentPage: 1,
+  isFetching: false,
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -42,6 +44,11 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         totalUsersCount: action.payload,
       }
+    case SET_LOADING:
+      return {
+        ...state,
+        isFetching: action.payload,
+      }
     default:
       return state
   }
@@ -66,6 +73,10 @@ export const setCurrentPageAC = (index) => ({
 export const setTotalUsersCountAC = (count) => ({
   type: SET_TOTAL_USER_COUNT,
   payload: count,
+})
+export const setIsLoadingAC = (bool) => ({
+  type: SET_LOADING,
+  payload: bool,
 })
 
 export default usersReducer
