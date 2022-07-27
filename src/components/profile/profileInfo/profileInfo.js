@@ -1,7 +1,11 @@
 import React from "react"
+import Preloader from "../../common/preloader/preloader"
 import profInfoStyle from "./profileInfo.module.css"
 
 export const ProfileInfo = ({ profile }) => {
+  if (!profile) {
+    return <Preloader />
+  }
   return (
     <div>
       <img
@@ -10,7 +14,7 @@ export const ProfileInfo = ({ profile }) => {
         alt="china_wall"
       />
       <img src={profile.photos.large} alt="" />
-      <div className={profInfoStyle.description}>{profile.aboutMe}</div>
+      <div className={profInfoStyle.description}>{profile.fullName}</div>
     </div>
   )
 }
