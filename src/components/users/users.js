@@ -2,6 +2,7 @@ import React from "react"
 import stylesUsers from "./styleUsers.module.css"
 import userPhoto from "../../assets/images/user.png"
 import { NavLink } from "react-router-dom"
+import axios from "axios"
 
 const Users = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
@@ -28,9 +29,50 @@ const Users = (props) => {
         <div key={user.id} className={stylesUsers.container}>
           <div className={stylesUsers.buttonBlock}>
             {user.followed ? (
-              <button onClick={() => props.unFollow(user.id)}>UnFollow</button>
+              <button
+                onClick={() => {
+                  axios
+                    .delete(
+                      `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
+                      {
+                        withCredentials: true,
+                        headers: {
+                          "API-KEY": "6130eac2-d9bb-49a9-b0c9-ecf512c9e8f7",
+                        },
+                      },
+                    )
+                    .then((response) => {
+                      if (response.data.resultCode === 0) {
+                        props.unFollow(user.id)
+                      }
+                    })
+                }}
+              >
+                UnFollow
+              </button>
             ) : (
-              <button onClick={() => props.follow(user.id)}>Follow</button>
+              <button
+                onClick={() => {
+                  axios
+                    .post(
+                      `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
+                      {},
+                      {
+                        withCredentials: true,
+                        headers: {
+                          "API-KEY": "6130eac2-d9bb-49a9-b0c9-ecf512c9e8f7",
+                        },
+                      },
+                    )
+                    .then((response) => {
+                      if (response.data.resultCode === 0) {
+                        props.follow(user.id)
+                      }
+                    })
+                }}
+              >
+                Follow
+              </button>
             )}
           </div>
           <div className={stylesUsers.infoBlock}>

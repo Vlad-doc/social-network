@@ -18,6 +18,9 @@ class UsersContainer extends Component {
     axios
       .get(
         `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`,
+        {
+          withCredentials: true,
+        },
       )
       .then((response) => {
         this.props.setIsLoading(false)
@@ -31,6 +34,9 @@ class UsersContainer extends Component {
     axios
       .get(
         `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${page}`,
+        {
+          withCredentials: true,
+        },
       )
       .then((response) => {
         this.props.setIsLoading(false)
