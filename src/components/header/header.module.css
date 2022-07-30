@@ -1,8 +1,19 @@
 .header {
   grid-area: header;
-  background-color: green;
+  background-color: rgb(74, 97, 172);
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .header img {
-  width: 20px;
+  width: 100px;
+}
+
+.link a {
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: aliceblue;
 }

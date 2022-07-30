@@ -12,7 +12,7 @@ const getParams = (WrapperContainer) => (props) => {
 export class ProfileContainer extends Component {
   componentDidMount() {
     const { userId } = this.props.params
-    console.log(this.props)
+
     axios
       .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
       .then((response) => this.props.setUserProfile(response.data))

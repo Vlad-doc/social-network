@@ -1,13 +1,20 @@
 import React from "react"
+import { NavLink } from "react-router-dom"
 import headStyle from "./header.module.css"
+import socialNetworkImg from "../../assets/images/socialImg.png"
 
-function Header() {
+function Header({ login, auth, user }) {
+  console.log(user)
   return (
     <header className={headStyle.header}>
-      <img
-        src="https://mms.businesswire.com/media/20220308006218/en/774915/22/Coca-Cola_black_and_white_bottles_logo.jpg"
-        alt="logo"
-      />
+      <img src={socialNetworkImg} alt="logo" />
+      {auth ? (
+        login
+      ) : (
+        <div className={headStyle.link}>
+          <NavLink to={"/login"}>Login</NavLink>
+        </div>
+      )}
     </header>
   )
 }

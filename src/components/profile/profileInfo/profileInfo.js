@@ -1,5 +1,4 @@
 import React from "react"
-import Preloader from "../../common/preloader/preloader"
 import profInfoStyle from "./profileInfo.module.css"
 
 export const ProfileInfo = ({ profile }) => {

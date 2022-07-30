@@ -1,7 +1,8 @@
 .nav {
   grid-area: nav;
-  background-color: burlywood;
+  background-color: rgb(74, 97, 172);
   padding: 2rem;
+  border-top: 5px solid cornflowerblue;
 }
 
 .item a {
@@ -17,7 +18,7 @@
 .item__friends {
   display: flex;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 .item__friends_friend {
