@@ -1,9 +1,9 @@
 import { Component } from "react"
 import Profile from "./profile"
 import { connect } from "react-redux"
-import axios from "axios"
 import { setUserProfile } from "../../redux/profileReducer"
 import { useParams } from "react-router-dom"
+import { getUserProfile } from "../../api/api"
 
 const getParams = (WrapperContainer) => (props) => {
   return <WrapperContainer {...props} params={useParams("/profile")} />
@@ -12,11 +12,9 @@ const getParams = (WrapperContainer) => (props) => {
 export class ProfileContainer extends Component {
   componentDidMount() {
     const { userId } = this.props.params
-    axios
-      .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-      .then((response) => {
-        this.props.setUserProfile(response.data)
-      })
+    getUserProfile(userId).then((response) => {
+      this.props.setUserProfile(response)
+    })
   }
 
   render() {

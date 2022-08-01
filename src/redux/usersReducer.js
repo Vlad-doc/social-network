@@ -4,6 +4,7 @@ const SET_USERS = "SET_USERS"
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE"
 const SET_TOTAL_USER_COUNT = "SET_TOTAL_USER_COUNT"
 const SET_LOADING = "SET_LOADING"
+const SET_FOLLOW_PROGRESS = "SET_FOLLOW_PROGRESS"
 
 const initialState = {
   users: [],
@@ -11,6 +12,7 @@ const initialState = {
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: false,
+  followProgress: [],
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -49,6 +51,13 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         isFetching: action.payload,
       }
+    case SET_FOLLOW_PROGRESS:
+      return {
+        ...state,
+        followProgress: action.isFetching
+          ? [...state.followProgress, action.payload]
+          : state.followProgress.filter((id) => id !== action.payload),
+      }
     default:
       return state
   }
@@ -77,6 +86,11 @@ export const setTotalUsersCount = (count) => ({
 export const setIsLoading = (bool) => ({
   type: SET_LOADING,
   payload: bool,
+})
+export const setFollowProgress = (isFetching, id) => ({
+  type: SET_FOLLOW_PROGRESS,
+  payload: id,
+  isFetching,
 })
 
 export default usersReducer
