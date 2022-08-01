@@ -1,7 +1,7 @@
 import React from "react"
 import stylesUsers from "./styleUsers.module.css"
 import userPhoto from "../../assets/images/user.png"
-import { NavLink } from "react-router-dom"
+import { Link } from "react-router-dom"
 import axios from "axios"
 
 const Users = (props) => {
@@ -37,7 +37,7 @@ const Users = (props) => {
                       {
                         withCredentials: true,
                         headers: {
-                          "API-KEY": "6130eac2-d9bb-49a9-b0c9-ecf512c9e8f7",
+                          "API-KEY": "b918b344-9af7-468d-85fc-eb294e638b71",
                         },
                       },
                     )
@@ -60,7 +60,7 @@ const Users = (props) => {
                       {
                         withCredentials: true,
                         headers: {
-                          "API-KEY": "6130eac2-d9bb-49a9-b0c9-ecf512c9e8f7",
+                          "API-KEY": "b918b344-9af7-468d-85fc-eb294e638b71",
                         },
                       },
                     )
@@ -77,14 +77,14 @@ const Users = (props) => {
           </div>
           <div className={stylesUsers.infoBlock}>
             <div className={stylesUsers.infoBlock__image}>
-              <NavLink to={`/profile/${user.id}`}>
+              <Link to={`/profile/${user.id}`}>
                 <img
                   src={
                     user.photos.small !== null ? user.photos.small : userPhoto
                   }
                   alt="ava"
                 />
-              </NavLink>
+              </Link>
             </div>
 
             <div className={stylesUsers.infoBlock__user}>

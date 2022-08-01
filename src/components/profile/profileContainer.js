@@ -12,10 +12,11 @@ const getParams = (WrapperContainer) => (props) => {
 export class ProfileContainer extends Component {
   componentDidMount() {
     const { userId } = this.props.params
-
     axios
       .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-      .then((response) => this.props.setUserProfile(response.data))
+      .then((response) => {
+        this.props.setUserProfile(response.data)
+      })
   }
 
   render() {
@@ -25,8 +26,9 @@ export class ProfileContainer extends Component {
 
 const mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
+  userAuth: state.auth.authUser,
 })
 
-export default connect(mapStateToProps, { setUserProfile })(
-  getParams(ProfileContainer),
-)
+export default connect(mapStateToProps, {
+  setUserProfile,
+})(getParams(ProfileContainer))

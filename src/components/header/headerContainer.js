@@ -24,6 +24,7 @@ export class HeaderContainer extends Component {
           })
       })
   }
+
   render() {
     return <Header {...this.props} />
   }
