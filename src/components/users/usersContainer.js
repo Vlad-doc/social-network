@@ -2,33 +2,21 @@ import { Component } from "react"
 import { connect } from "react-redux"
 import {
   follow,
-  setUsers,
   unFollow,
   setCurrentPage,
   setTotalUsersCount,
-  setIsLoading,
-  setFollowProgress,
+  getUsers,
 } from "../../redux/usersReducer"
 import Users from "./users"
 import Preloader from "../common/preloader/preloader"
-import { getUsers } from "../../api/api"
 
 class UsersContainer extends Component {
   componentDidMount() {
-    this.props.setIsLoading(true)
-    getUsers(this.props.pageSize, this.props.currentPage).then((response) => {
-      this.props.setIsLoading(false)
-      this.props.setUsers(response.items)
-      this.props.setTotalUsersCount(Math.ceil(response.totalCount / 200))
-    })
+    this.props.getUsers(this.props.pageSize, this.props.currentPage)
   }
   onPageChanged = (page) => {
     this.props.setCurrentPage(page)
-    this.props.setIsLoading(true)
-    getUsers(this.props.pageSize, page).then((response) => {
-      this.props.setIsLoading(false)
-      this.props.setUsers(response.items)
-    })
+    this.props.getUsers(this.props.pageSize, page)
   }
 
   render() {
@@ -66,9 +54,7 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   follow,
   unFollow,
-  setUsers,
   setCurrentPage,
   setTotalUsersCount,
-  setIsLoading,
-  setFollowProgress,
+  getUsers,
 })(UsersContainer)

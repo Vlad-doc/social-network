@@ -1,3 +1,5 @@
+import { loadUsers, setUserFollow, setUserUnFollow } from "../api/api"
+
 const FOLLOW = "FOLLOW"
 const UN_FOLLOW = "UN_FOLLOW"
 const SET_USERS = "SET_USERS"
@@ -63,11 +65,11 @@ const usersReducer = (state = initialState, action) => {
   }
 }
 
-export const follow = (userId) => ({
+export const subscribeToUser = (userId) => ({
   type: FOLLOW,
   payload: userId,
 })
-export const unFollow = (userId) => ({
+export const unSubscribeToUser = (userId) => ({
   type: UN_FOLLOW,
   payload: userId,
 })
@@ -83,7 +85,7 @@ export const setTotalUsersCount = (count) => ({
   type: SET_TOTAL_USER_COUNT,
   payload: count,
 })
-export const setIsLoading = (bool) => ({
+export const loadingInProgress = (bool) => ({
   type: SET_LOADING,
   payload: bool,
 })
@@ -92,5 +94,34 @@ export const setFollowProgress = (isFetching, id) => ({
   payload: id,
   isFetching,
 })
+
+export const getUsers = (pageSize, currentPage) => (dispatch) => {
+  dispatch(loadingInProgress(true))
+  loadUsers(pageSize, currentPage).then((response) => {
+    dispatch(loadingInProgress(false))
+    dispatch(setUsers(response.items))
+    dispatch(setTotalUsersCount(Math.ceil(response.totalCount / 200)))
+  })
+}
+
+export const follow = (id) => (dispatch) => {
+  dispatch(setFollowProgress(true, id))
+  setUserFollow(id).then((response) => {
+    if (response.resultCode === 0) {
+      dispatch(subscribeToUser(id))
+    }
+    dispatch(setFollowProgress(false, id))
+  })
+}
+
+export const unFollow = (id) => (dispatch) => {
+  dispatch(setFollowProgress(true, id))
+  setUserUnFollow(id).then((response) => {
+    if (response.resultCode === 0) {
+      dispatch(unSubscribeToUser(id))
+    }
+    dispatch(setFollowProgress(false, id))
+  })
+}
 
 export default usersReducer

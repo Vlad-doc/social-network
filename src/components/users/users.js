@@ -2,7 +2,6 @@ import React from "react"
 import stylesUsers from "./styleUsers.module.css"
 import userPhoto from "../../assets/images/user.png"
 import { Link } from "react-router-dom"
-import { setUserFollow, setUserUnFollow } from "../../api/api"
 
 const Users = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
@@ -31,30 +30,14 @@ const Users = (props) => {
             {user.followed ? (
               <button
                 disabled={props.followProgress.some((id) => id === user.id)}
-                onClick={() => {
-                  props.setFollowProgress(true, user.id)
-                  setUserUnFollow(user.id).then((response) => {
-                    if (response.resultCode === 0) {
-                      props.unFollow(user.id)
-                    }
-                    props.setFollowProgress(false, user.id)
-                  })
-                }}
+                onClick={() => props.unFollow(user.id)}
               >
                 UnFollow
               </button>
             ) : (
               <button
                 disabled={props.followProgress.some((id) => id === user.id)}
-                onClick={() => {
-                  props.setFollowProgress(true, user.id)
-                  setUserFollow(user.id).then((response) => {
-                    if (response.resultCode === 0) {
-                      props.follow(user.id)
-                    }
-                    props.setFollowProgress(false, user.id)
-                  })
-                }}
+                onClick={() => props.follow(user.id)}
               >
                 Follow
               </button>
