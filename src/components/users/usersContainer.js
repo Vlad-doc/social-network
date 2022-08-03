@@ -1,5 +1,6 @@
 import { Component } from "react"
 import { connect } from "react-redux"
+import { Navigate } from "react-router-dom"
 import {
   follow,
   unFollow,
@@ -22,20 +23,24 @@ class UsersContainer extends Component {
   render() {
     return (
       <>
-        {this.props.isFetching ? (
-          <Preloader />
+        {this.props.isAuth ? (
+          this.props.isFetching ? (
+            <Preloader />
+          ) : (
+            <Users
+              totalUsersCount={this.props.totalUsersCount}
+              onPageChanged={this.onPageChanged}
+              pageSize={this.props.pageSize}
+              currentPage={this.props.currentPage}
+              users={this.props.users}
+              follow={this.props.follow}
+              unFollow={this.props.unFollow}
+              setFollowProgress={this.props.setFollowProgress}
+              followProgress={this.props.followProgress}
+            />
+          )
         ) : (
-          <Users
-            totalUsersCount={this.props.totalUsersCount}
-            onPageChanged={this.onPageChanged}
-            pageSize={this.props.pageSize}
-            currentPage={this.props.currentPage}
-            users={this.props.users}
-            follow={this.props.follow}
-            unFollow={this.props.unFollow}
-            setFollowProgress={this.props.setFollowProgress}
-            followProgress={this.props.followProgress}
-          />
+          <Navigate to={"/login"} />
         )}
       </>
     )
@@ -49,6 +54,7 @@ const mapStateToProps = (state) => ({
   currentPage: state.usersPage.currentPage,
   isFetching: state.usersPage.isFetching,
   followProgress: state.usersPage.followProgress,
+  isAuth: state.auth.isAuth,
 })
 
 export default connect(mapStateToProps, {
