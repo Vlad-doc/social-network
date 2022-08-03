@@ -1,7 +1,6 @@
 import { Component } from "react"
 import Profile from "./profile"
 import { connect } from "react-redux"
-import { setUserProfile } from "../../redux/profileReducer"
 import { useParams } from "react-router-dom"
 import { getUserData } from "../../redux/profileReducer"
 
@@ -26,6 +25,5 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, {
-  setUserProfile,
   getUserData,
 })(getParams(ProfileContainer))

@@ -1,5 +1,6 @@
 import React from "react"
 import profInfoStyle from "./profileInfo.module.css"
+import notFoundPNG from "../../../assets/images/not_found.png"
 
 export const ProfileInfo = ({ profile }) => {
   return (
@@ -11,7 +12,11 @@ export const ProfileInfo = ({ profile }) => {
       />
       {profile ? (
         <>
-          <img src={profile.photos.large} alt="" />
+          <img
+            src={profile.photos.large ? profile.photos.large : notFoundPNG}
+            alt=""
+            width={"200px"}
+          />
           <div className={profInfoStyle.description}>{profile.fullName}</div>
         </>
       ) : (
