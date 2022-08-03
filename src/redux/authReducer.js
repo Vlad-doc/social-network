@@ -1,3 +1,5 @@
+import { getLogIn, getUserProfile } from "../api/api"
+
 const SET_USER_AUTH = "SET_USER_AUTH"
 const GET_AUTH_USER = "GET_AUTH_USER"
 
@@ -36,5 +38,17 @@ export const getAuthUser = (data) => ({
   type: GET_AUTH_USER,
   payload: data,
 })
+
+export const getAuthorizedUserDetails = () => (dispatch) => {
+  getLogIn().then((response) => {
+    if (response.resultCode === 0) {
+      const { email, id, login } = response.data
+      dispatch(setAuthReducer(email, id, login))
+    }
+    getUserProfile(response.data.id).then((response) => {
+      dispatch(getAuthUser(response))
+    })
+  })
+}
 
 export default authReducer
