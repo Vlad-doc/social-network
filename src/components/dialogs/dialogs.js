@@ -2,7 +2,6 @@ import React from "react"
 import dialogsStyle from "./dialogs.module.css"
 import { DialogItem } from "./dialogItem/dialogItem"
 import { Message } from "./message/message"
-import { Navigate } from "react-router-dom"
 
 function Dialogs({
   sendMessageCreator,
@@ -10,11 +9,9 @@ function Dialogs({
   dialogs,
   messages,
   newMessageText,
-  isAuth,
 }) {
   const sendMessage = () => sendMessageCreator()
   const onMessageChange = (e) => newMessageCreator(e.target.value)
-  if (!isAuth) return <Navigate to={"/login"} />
   return (
     <div className={dialogsStyle.dialogs}>
       <div className={dialogsStyle.dialogItems}>

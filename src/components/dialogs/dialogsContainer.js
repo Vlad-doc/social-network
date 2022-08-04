@@ -4,6 +4,7 @@ import {
   newMessageCreator,
   sendMessageCreator,
 } from "../../redux/dialogsReducer"
+import WithAuthRedirect from "../hoc/withAuthRedirect"
 
 const mapStateToProps = (state) => ({
   dialogs: state.dialogsPage.dialogs,
@@ -12,7 +13,9 @@ const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
 })
 
-export default connect(mapStateToProps, {
-  sendMessageCreator,
-  newMessageCreator,
-})(Dialogs)
+export default WithAuthRedirect(
+  connect(mapStateToProps, {
+    sendMessageCreator,
+    newMessageCreator,
+  })(Dialogs),
+)
