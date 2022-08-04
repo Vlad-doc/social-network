@@ -1,15 +1,11 @@
 import React from "react"
 import profInfoStyle from "./profileInfo.module.css"
 import notFoundPNG from "../../../assets/images/not_found.png"
+import ProfileStatus from "./profileStatus"
 
 export const ProfileInfo = ({ profile }) => {
   return (
     <div>
-      <img
-        className={profInfoStyle.content__img}
-        src="https://img2.akspic.ru/attachments/originals/5/2/1/4/0/104125-velikaya_kitajskaya_stena-gornaya_derevnya-orientir-gornyj_relef-chudesa_mira-2560x1706.jpg"
-        alt="china_wall"
-      />
       {profile ? (
         <>
           <img
@@ -17,7 +13,10 @@ export const ProfileInfo = ({ profile }) => {
             alt=""
             width={"200px"}
           />
-          <div className={profInfoStyle.description}>{profile.fullName}</div>
+          <div className={profInfoStyle.description}>
+            {profile.fullName}
+            <ProfileStatus status="Hello my friends" />
+          </div>
         </>
       ) : (
         profile

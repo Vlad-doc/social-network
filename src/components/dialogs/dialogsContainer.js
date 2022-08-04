@@ -10,7 +10,6 @@ const mapStateToProps = (state) => ({
   dialogs: state.dialogsPage.dialogs,
   messages: state.dialogsPage.messages,
   newMessageText: state.dialogsPage.newMessageText,
-  isAuth: state.auth.isAuth,
 })
 
 export default WithAuthRedirect(

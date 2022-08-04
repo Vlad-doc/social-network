@@ -26,17 +26,7 @@ class UsersContainer extends Component {
         {this.props.isFetching ? (
           <Preloader />
         ) : (
-          <Users
-            totalUsersCount={this.props.totalUsersCount}
-            onPageChanged={this.onPageChanged}
-            pageSize={this.props.pageSize}
-            currentPage={this.props.currentPage}
-            users={this.props.users}
-            follow={this.props.follow}
-            unFollow={this.props.unFollow}
-            setFollowProgress={this.props.setFollowProgress}
-            followProgress={this.props.followProgress}
-          />
+          <Users {...this.props} onPageChanged={this.onPageChanged} />
         )}
       </>
     )
@@ -50,7 +40,6 @@ const mapStateToProps = (state) => ({
   currentPage: state.usersPage.currentPage,
   isFetching: state.usersPage.isFetching,
   followProgress: state.usersPage.followProgress,
-  isAuth: state.auth.isAuth,
 })
 
 export default WithAuthRedirect(
