@@ -3,23 +3,30 @@ import profInfoStyle from "./profileInfo.module.css"
 import notFoundPNG from "../../../assets/images/not_found.png"
 import ProfileStatus from "./profileStatus"
 
-export const ProfileInfo = ({ profile }) => {
+export const ProfileInfo = (props) => {
   return (
     <div>
-      {profile ? (
+      {props.profile ? (
         <>
           <img
-            src={profile.photos.large ? profile.photos.large : notFoundPNG}
+            src={
+              props.profile.photos.large
+                ? props.profile.photos.large
+                : notFoundPNG
+            }
             alt=""
             width={"200px"}
           />
           <div className={profInfoStyle.description}>
-            {profile.fullName}
-            <ProfileStatus status="Hello my friends" />
+            {props.profile.fullName}
+            <ProfileStatus
+              status={props.status}
+              updateUserStatus={props.updateUserStatus}
+            />
           </div>
         </>
       ) : (
-        profile
+        props.profile
       )}
     </div>
   )

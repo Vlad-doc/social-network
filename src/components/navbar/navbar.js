@@ -21,6 +21,11 @@ function Navbar(props) {
         </NavLink>
       </div>
       <div className={navStyle.item}>
+        <NavLink to="/users" className={activeClass}>
+          Users
+        </NavLink>
+      </div>
+      <div className={navStyle.item}>
         <NavLink to="/news" className={activeClass}>
           News
         </NavLink>
@@ -33,11 +38,6 @@ function Navbar(props) {
       <div className={navStyle.item}>
         <NavLink to="/settings" className={activeClass}>
           Settings
-        </NavLink>
-      </div>
-      <div className={navStyle.item}>
-        <NavLink to="/users" className={activeClass}>
-          Users
         </NavLink>
       </div>
       <h4>Friends</h4>

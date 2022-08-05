@@ -3,15 +3,21 @@ import { useState } from "react"
 import profInfoStyle from "./profileInfo.module.css"
 
 const ProfileStatus = (props) => {
-  const [status, setStatus] = useState(true)
+  console.log("render")
+  const [hide, setHide] = useState(true)
+  const [status, setStatus] = useState(props.status)
+  console.log(status)
   const handleChange = () => {
-    setStatus((prevState) => !prevState)
+    setHide((prevState) => !prevState)
   }
-
+  const changeStatus = (e) => {
+    setStatus(e.target.value)
+    props.updateUserStatus(e.target.value)
+  }
   return (
     <div className={profInfoStyle.status}>
-      {status ? (
-        <h4 onDoubleClick={handleChange}>{props.status}</h4>
+      {hide ? (
+        <h4 onDoubleClick={handleChange}>{props.status || "---"}</h4>
       ) : (
         <div>
           <input
@@ -19,7 +25,7 @@ const ProfileStatus = (props) => {
             autoFocus={true}
             value={props.status}
             onBlur={handleChange}
-            onChange={() => {}}
+            onChange={changeStatus}
           />
         </div>
       )}
