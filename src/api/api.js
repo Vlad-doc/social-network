@@ -8,24 +8,34 @@ const instance = axios.create({
   },
 })
 
-export const loadUsers = (pageSize, currentPage) => {
-  return instance
-    .get(`users?count=${pageSize}&page=${currentPage}`)
-    .then((response) => response.data)
+export const authAPI = {
+  me() {
+    return instance.get(`auth/me`).then((response) => response.data)
+  },
+  getUserProfile(id) {
+    return profileAPI.getUserProfile(id)
+  },
 }
 
-export const getLogIn = () => {
-  return instance.get(`auth/me`).then((response) => response.data)
+export const usersAPI = {
+  loadUsers(pageSize, currentPage) {
+    return instance
+      .get(`users?count=${pageSize}&page=${currentPage}`)
+      .then((response) => response.data)
+  },
+  setUserFollow(id) {
+    return instance.post(`follow/${id}`).then((response) => response.data)
+  },
+  setUserUnFollow(id) {
+    return instance.delete(`follow/${id}`).then((response) => response.data)
+  },
+  getUserProfile(id) {
+    return profileAPI.getUserProfile(id)
+  },
 }
 
-export const getUserProfile = (id) => {
-  return instance.get(`profile/${id}`).then((response) => response.data)
-}
-
-export const setUserFollow = (id) => {
-  return instance.post(`follow/${id}`).then((response) => response.data)
-}
-
-export const setUserUnFollow = (id) => {
-  return instance.delete(`follow/${id}`).then((response) => response.data)
+export const profileAPI = {
+  getUserProfile(id) {
+    return instance.get(`profile/${id}`).then((response) => response.data)
+  },
 }

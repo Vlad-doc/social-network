@@ -1,4 +1,4 @@
-import { loadUsers, setUserFollow, setUserUnFollow } from "../api/api"
+import { usersAPI } from "../api/api"
 
 const FOLLOW = "FOLLOW"
 const UN_FOLLOW = "UN_FOLLOW"
@@ -97,7 +97,7 @@ export const setFollowProgress = (isFetching, id) => ({
 
 export const getUsers = (pageSize, currentPage) => (dispatch) => {
   dispatch(loadingInProgress(true))
-  loadUsers(pageSize, currentPage).then((response) => {
+  usersAPI.loadUsers(pageSize, currentPage).then((response) => {
     dispatch(loadingInProgress(false))
     dispatch(setUsers(response.items))
     dispatch(setTotalUsersCount(Math.ceil(response.totalCount / 200)))
@@ -106,7 +106,7 @@ export const getUsers = (pageSize, currentPage) => (dispatch) => {
 
 export const follow = (id) => (dispatch) => {
   dispatch(setFollowProgress(true, id))
-  setUserFollow(id).then((response) => {
+  usersAPI.setUserFollow(id).then((response) => {
     if (response.resultCode === 0) {
       dispatch(subscribeToUser(id))
     }
@@ -116,7 +116,7 @@ export const follow = (id) => (dispatch) => {
 
 export const unFollow = (id) => (dispatch) => {
   dispatch(setFollowProgress(true, id))
-  setUserUnFollow(id).then((response) => {
+  usersAPI.setUserUnFollow(id).then((response) => {
     if (response.resultCode === 0) {
       dispatch(unSubscribeToUser(id))
     }
