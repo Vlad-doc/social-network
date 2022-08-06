@@ -1,25 +1,16 @@
 import React from "react"
+import { Field, reduxForm } from "redux-form"
 import postsStyle from "./myPosts.module.css"
 import Post from "./post/post"
 
-function MyPosts({ posts, newPostText, updateNewPostText, addPost }) {
-  const createPost = () => addPost()
-  const onPostChange = (e) => updateNewPostText(e.target.value)
+function MyPosts({ posts, addPostText }) {
+  const createNewPost = (values) => {
+    addPostText(values.newPostText)
+  }
   return (
     <div className={postsStyle.postsBlock}>
       <h3>My posts</h3>
-      <div>
-        <div>
-          <textarea
-            value={newPostText}
-            onChange={onPostChange}
-            placeholder="Hello friend"
-          />
-        </div>
-        <div>
-          <button onClick={createPost}>Add post</button>
-        </div>
-      </div>
+      <PostsReduxForm onSubmit={createNewPost} />
       <div className={postsStyle.posts}>
         {posts.map((post) => (
           <Post
@@ -33,5 +24,20 @@ function MyPosts({ posts, newPostText, updateNewPostText, addPost }) {
     </div>
   )
 }
+const PostsForm = (props) => {
+  const { handleSubmit } = props
+  return (
+    <form onSubmit={handleSubmit}>
+      <Field
+        component="textarea"
+        name="newPostText"
+        placeholder="New post text"
+      />
+      <button>Add post</button>
+    </form>
+  )
+}
+
+const PostsReduxForm = reduxForm({ form: "posts" })(PostsForm)
 
 export default MyPosts

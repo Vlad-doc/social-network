@@ -3,10 +3,8 @@ import { useState } from "react"
 import profInfoStyle from "./profileInfo.module.css"
 
 const ProfileStatus = (props) => {
-  console.log("render")
   const [hide, setHide] = useState(true)
   const [status, setStatus] = useState(props.status)
-  console.log(status)
   const handleChange = () => {
     setHide((prevState) => !prevState)
   }
@@ -23,7 +21,7 @@ const ProfileStatus = (props) => {
           <input
             type="text"
             autoFocus={true}
-            value={props.status}
+            value={props.status ? props.status : ""}
             onBlur={handleChange}
             onChange={changeStatus}
           />

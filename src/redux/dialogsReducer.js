@@ -1,5 +1,4 @@
-const NEW_MESSAGE = "NEW-MESSAGE"
-const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT"
+const SEND_MESSAGE = "SEND-MESSAGE"
 
 const initialState = {
   messages: [
@@ -31,28 +30,20 @@ const initialState = {
       avatar: "https://findicons.com/files/icons/1072/face_avatars/300/i03.png",
     },
   ],
-  newMessageText: "",
 }
 
 const dialogsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case NEW_MESSAGE:
+    case SEND_MESSAGE:
       return {
         ...state,
         messages: [
           ...state.messages,
           {
             id: state.messages[state.messages.length - 1].id + 1,
-            message: state.newMessageText,
+            message: action.newMessageText,
           },
         ],
-        newMessageText: "",
-      }
-
-    case UPDATE_NEW_MESSAGE_TEXT:
-      return {
-        ...state,
-        newMessageText: action.payload,
       }
 
     default:
@@ -60,12 +51,9 @@ const dialogsReducer = (state = initialState, action) => {
   }
 }
 
-export const sendMessageCreator = () => ({
-  type: NEW_MESSAGE,
-})
-export const newMessageCreator = (text) => ({
-  type: UPDATE_NEW_MESSAGE_TEXT,
-  payload: text,
+export const sendMessageCreator = (newMessageText) => ({
+  type: SEND_MESSAGE,
+  newMessageText,
 })
 
 export default dialogsReducer
