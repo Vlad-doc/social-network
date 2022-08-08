@@ -51,4 +51,19 @@ export const getAuthorizedUserDetails = () => (dispatch) => {
   })
 }
 
+export const login = (email, password, rememberMe) => (dispatch) => {
+  authAPI.login(email, password, rememberMe).then((response) => {
+    if (response.resultCode === 0) {
+      dispatch(() => (dispatch) => {
+        authAPI.me().then((response) => {
+          if (response.resultCode === 0) {
+            const { email, id, login } = response.data
+            dispatch(setAuthReducer(email, id, login))
+          }
+        })
+      })
+    }
+  })
+}
+
 export default authReducer
