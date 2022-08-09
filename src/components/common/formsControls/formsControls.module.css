@@ -5,3 +5,7 @@
 .input h3 {
   color: #f30a0a;
 }
+
+.input input.error {
+  border: 2px solid red;
+}

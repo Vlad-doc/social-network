@@ -29,9 +29,9 @@ const authReducer = (state = initialState, { type, payload }) => {
   }
 }
 
-export const setAuthReducer = (id, email, login) => ({
+export const setAuthReducer = (email, id, login) => ({
   type: SET_USER_AUTH,
-  payload: { id, email, login },
+  payload: { email, id, login },
 })
 
 export const getAuthUser = (data) => ({
@@ -44,6 +44,8 @@ export const getAuthorizedUserDetails = () => (dispatch) => {
     if (response.resultCode === 0) {
       const { email, id, login } = response.data
       dispatch(setAuthReducer(email, id, login))
+    } else if (response.resultCode === 1) {
+      return null
     }
     authAPI.getUserProfile(response.data.id).then((response) => {
       dispatch(getAuthUser(response))
@@ -54,14 +56,15 @@ export const getAuthorizedUserDetails = () => (dispatch) => {
 export const login = (email, password, rememberMe) => (dispatch) => {
   authAPI.login(email, password, rememberMe).then((response) => {
     if (response.resultCode === 0) {
-      dispatch(() => (dispatch) => {
-        authAPI.me().then((response) => {
-          if (response.resultCode === 0) {
-            const { email, id, login } = response.data
-            dispatch(setAuthReducer(email, id, login))
-          }
-        })
-      })
+      dispatch(getAuthorizedUserDetails())
+    }
+  })
+}
+
+export const logout = () => (dispatch) => {
+  authAPI.logout().then((response) => {
+    if (response.data.resultCode === 0) {
+      dispatch(setAuthReducer(null, null, null))
     }
   })
 }

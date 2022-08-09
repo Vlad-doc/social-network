@@ -3,27 +3,36 @@ import headStyle from "./header.module.css"
 import socialNetworkImg from "../../assets/images/socialImg.png"
 import userPhoto from "../../assets/images/user.png"
 import { Link } from "react-router-dom"
+import CustomButton from "../common/button/customButton"
 
-function Header({ auth, userAuth }) {
+function Header(props) {
+  const exit = () => props.logout()
+
   return (
     <header className={headStyle.header}>
       <img src={socialNetworkImg} alt="logo" />
-      {auth ? (
-        userAuth ? (
+      {props.auth ? (
+        props.userAuth ? (
           <div className={headStyle.userProfile}>
             <div>
-              <Link to={`/profile/${userAuth.userId}`}>
-                <img
-                  src={
-                    userAuth.photos.small !== null
-                      ? userAuth.photos.small
-                      : userPhoto
-                  }
-                  alt="ava"
-                />
-              </Link>
+              <div>
+                <Link to={`/profile/${props.userAuth.userId}`}>
+                  <img
+                    className={headStyle.ava}
+                    src={
+                      props.userAuth.photos.small !== null
+                        ? props.userAuth.photos.small
+                        : userPhoto
+                    }
+                    alt="ava"
+                  />
+                </Link>
+              </div>
+              <div>{props.userAuth.fullName}</div>
             </div>
-            <div>{userAuth.fullName}</div>
+            <div>
+              <CustomButton children="Logout" onClick={exit} />
+            </div>
           </div>
         ) : (
           <div>Loading...</div>

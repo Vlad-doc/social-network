@@ -8,7 +8,6 @@ import { maxLength, required } from "../../utils/validators/validators"
 
 function Dialogs({ sendMessageCreator, dialogs, messages }) {
   const addNewMessage = (values) => {
-    console.log(values)
     sendMessageCreator(values.newMessageBody)
   }
 

@@ -2,6 +2,7 @@ import React from "react"
 import stylesUsers from "./styleUsers.module.css"
 import userPhoto from "../../assets/images/user.png"
 import { Link } from "react-router-dom"
+import CustomButton from "../common/button/customButton"
 
 const Users = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
@@ -28,19 +29,17 @@ const Users = (props) => {
         <div key={user.id} className={stylesUsers.container}>
           <div className={stylesUsers.buttonBlock}>
             {user.followed ? (
-              <button
+              <CustomButton
+                children={"UnFollow"}
                 disabled={props.followProgress.some((id) => id === user.id)}
                 onClick={() => props.unFollow(user.id)}
-              >
-                UnFollow
-              </button>
+              />
             ) : (
-              <button
+              <CustomButton
+                children={"Follow"}
                 disabled={props.followProgress.some((id) => id === user.id)}
                 onClick={() => props.follow(user.id)}
-              >
-                Follow
-              </button>
+              />
             )}
           </div>
           <div className={stylesUsers.infoBlock}>

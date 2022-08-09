@@ -18,6 +18,12 @@
   color: aliceblue;
 }
 
+.userProfile {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
 .userProfile img {
   width: 50px;
 }
