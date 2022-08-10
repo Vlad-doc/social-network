@@ -9,3 +9,10 @@
 .input input.error {
   border: 2px solid red;
 }
+
+.loginError {
+  padding: 1rem;
+  font-weight: bold;
+  color: red;
+  font-size: 1.5rem;
+}

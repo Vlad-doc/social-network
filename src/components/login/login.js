@@ -5,6 +5,7 @@ import { LoginControl } from "../common/formsControls/formsControls"
 import { connect } from "react-redux"
 import { login } from "../../redux/authReducer"
 import { Navigate } from "react-router-dom"
+import style from "../common/formsControls/formsControls.module.css"
 
 const LoginForm = (props) => {
   const { handleSubmit } = props
@@ -31,6 +32,9 @@ const LoginForm = (props) => {
         <Field type="checkbox" component={"input"} name="rememberMe" />
         remember me
       </div>
+      {props.error ? (
+        <div className={style.loginError}>{props.error}</div>
+      ) : null}
       <div>
         <button>Login</button>
       </div>
