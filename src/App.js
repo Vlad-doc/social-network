@@ -9,9 +9,19 @@ import UsersContainer from "./components/users/usersContainer"
 import ProfileContainer from "./components/profile/profileContainer"
 import HeaderContainer from "./components/header/headerContainer"
 import Login from "./components/login/login"
+import { useLayoutEffect } from "react"
+import { connect } from "react-redux/es/exports"
+import { initializeAPP } from "./redux/appReducer"
+import Preloader from "./components/common/preloader/preloader"
 
-const App = () => {
-  return (
+const App = (props) => {
+  useLayoutEffect(() => {
+    props.initializeAPP()
+  })
+
+  return !props.initialized ? (
+    <Preloader />
+  ) : (
     <div className="wrapper">
       <HeaderContainer />
       <Navbar />
@@ -30,4 +40,9 @@ const App = () => {
   )
 }
 
-export default App
+export default connect(
+  (state) => ({
+    initialized: state.app.initialized,
+  }),
+  { initializeAPP },
+)(App)

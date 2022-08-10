@@ -42,12 +42,10 @@ const mapStateToProps = (state) => ({
   followProgress: state.usersPage.followProgress,
 })
 
-export default WithAuthRedirect(
-  connect(mapStateToProps, {
-    follow,
-    unFollow,
-    setCurrentPage,
-    setTotalUsersCount,
-    getUsers,
-  })(UsersContainer),
-)
+export default connect(mapStateToProps, {
+  follow,
+  unFollow,
+  setCurrentPage,
+  setTotalUsersCount,
+  getUsers,
+})(UsersContainer)

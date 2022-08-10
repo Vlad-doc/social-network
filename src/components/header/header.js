@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import headStyle from "./header.module.css"
 import socialNetworkImg from "../../assets/images/socialImg.png"
 import userPhoto from "../../assets/images/user.png"
@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 import CustomButton from "../common/button/customButton"
 
 function Header(props) {
-  const exit = () => props.logout()
+  let exit = () => props.logout()
 
   return (
     <header className={headStyle.header}>

@@ -18,7 +18,7 @@ const authReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         ...payload,
-        isAuth: true,
+        isAuth: !state.isAuth,
       }
     case GET_AUTH_USER:
       return {
@@ -41,7 +41,7 @@ export const getAuthUser = (data) => ({
 })
 
 export const getAuthorizedUserDetails = () => (dispatch) => {
-  authAPI.me().then((response) => {
+  return authAPI.me().then((response) => {
     if (response.resultCode === 0) {
       const { email, id, login } = response.data
       dispatch(setAuthReducer(email, id, login))
