@@ -95,9 +95,9 @@ export const setFollowProgress = (isFetching, id) => ({
   isFetching,
 })
 
-export const getUsers = (pageSize, currentPage) => (dispatch) => {
+export const requestUsers = (pageSize, page) => (dispatch) => {
   dispatch(loadingInProgress(true))
-  usersAPI.loadUsers(pageSize, currentPage).then((response) => {
+  usersAPI.loadUsers(pageSize, page).then((response) => {
     dispatch(loadingInProgress(false))
     dispatch(setUsers(response.items))
     dispatch(setTotalUsersCount(Math.ceil(response.totalCount / 200)))
