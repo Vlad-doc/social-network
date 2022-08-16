@@ -7,7 +7,7 @@ import Post from "./post/post"
 
 const maxLength15 = maxLength(15)
 
-function MyPosts({ posts, addPostText }) {
+const MyPosts = ({ posts, addPostText }) => {
   const createNewPost = (values) => {
     addPostText(values.newPostText)
   }
