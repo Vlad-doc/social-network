@@ -21,7 +21,7 @@ const ProfileStatus = (props) => {
           <input
             type="text"
             autoFocus={true}
-            value={props.status ? props.status : ""}
+            value={status ? props.status : ""}
             onBlur={handleChange}
             onChange={changeStatus}
           />

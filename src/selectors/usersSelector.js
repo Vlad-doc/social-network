@@ -1,4 +1,7 @@
-export const getUsers = (state) => state.usersPage.users
+import { createSelector } from "@reduxjs/toolkit"
+
+const getUsersSelector = (state) => state.usersPage.users
+export const getUsers = createSelector(getUsersSelector, (users) => users)
 export const getPageSize = (state) => state.usersPage.pageSize
 export const getTotalUsersCount = (state) => state.usersPage.totalUsersCount
 export const getCurrentPage = (state) => state.usersPage.currentPage
