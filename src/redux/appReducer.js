@@ -20,10 +20,9 @@ const appReducer = (state = initialState, { type }) => {
 
 export const initializedSuccess = () => ({ type: SET_INITIALIZED })
 
-export const initializeAPP = () => (dispatch) => {
-  dispatch(getAuthorizedUserDetails()).then(() => {
-    dispatch(initializedSuccess())
-  })
+export const initializeAPP = () => async (dispatch) => {
+  await dispatch(getAuthorizedUserDetails())
+  dispatch(initializedSuccess())
 }
 
 export default appReducer

@@ -95,33 +95,44 @@ export const setFollowProgress = (isFetching, id) => ({
   isFetching,
 })
 
-export const requestUsers = (pageSize, page) => (dispatch) => {
+export const requestUsers = (pageSize, page) => async (dispatch) => {
   dispatch(loadingInProgress(true))
-  usersAPI.loadUsers(pageSize, page).then((response) => {
-    dispatch(loadingInProgress(false))
-    dispatch(setUsers(response.items))
-    dispatch(setTotalUsersCount(Math.ceil(response.totalCount / 200)))
-  })
+  const response = await usersAPI.loadUsers(pageSize, page)
+  dispatch(loadingInProgress(false))
+  dispatch(setUsers(response.items))
+  dispatch(setTotalUsersCount(Math.ceil(response.totalCount / 200)))
 }
 
-export const follow = (id) => (dispatch) => {
+const userSubscriber = async (dispatch, id, apiRequest, actionCreator) => {
   dispatch(setFollowProgress(true, id))
-  usersAPI.setUserFollow(id).then((response) => {
-    if (response.resultCode === 0) {
-      dispatch(subscribeToUser(id))
-    }
-    dispatch(setFollowProgress(false, id))
-  })
+  const response = await apiRequest(id)
+  if (response.resultCode === 0) {
+    dispatch(actionCreator(id))
+  }
+  dispatch(setFollowProgress(false, id))
 }
 
-export const unFollow = (id) => (dispatch) => {
-  dispatch(setFollowProgress(true, id))
-  usersAPI.setUserUnFollow(id).then((response) => {
-    if (response.resultCode === 0) {
-      dispatch(unSubscribeToUser(id))
-    }
-    dispatch(setFollowProgress(false, id))
-  })
-}
+export const follow = (id) => async (dispatch) =>
+  userSubscriber(dispatch, id, usersAPI.setUserFollow, subscribeToUser)
+export const unFollow = (id) => async (dispatch) =>
+  userSubscriber(dispatch, id, usersAPI.setUserUnFollow, unSubscribeToUser)
+
+// export const follow = (id) => async (dispatch) => {
+//   dispatch(setFollowProgress(true, id))
+//   const response = await usersAPI.setUserFollow(id)
+//   if (response.resultCode === 0) {
+//     dispatch(subscribeToUser(id))
+//   }
+//   dispatch(setFollowProgress(false, id))
+// }
+
+// export const unFollow = (id) => async (dispatch) => {
+//   dispatch(setFollowProgress(true, id))
+//   const response = await usersAPI.setUserUnFollow(id)
+//   if (response.resultCode === 0) {
+//     dispatch(unSubscribeToUser(id))
+//   }
+//   dispatch(setFollowProgress(false, id))
+// }
 
 export default usersReducer
