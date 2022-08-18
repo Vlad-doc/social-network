@@ -4,22 +4,6 @@
   margin: 25px 50px;
 }
 
-.list {
-  margin: 20px auto;
-  text-align: center;
-  font-size: 1.5rem;
-}
-
-.list span {
-  margin-left: 5px;
-  cursor: pointer;
-}
-
-.list_active {
-  font-weight: bold;
-  font-size: 2rem;
-}
-
 .buttonBlock {
   flex: 1;
 }

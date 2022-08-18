@@ -3,6 +3,7 @@ import stylesUsers from "./styleUsers.module.css"
 import userPhoto from "../../assets/images/user.png"
 import { Link } from "react-router-dom"
 import CustomButton from "../common/button/customButton"
+import Paginator from "../common/paginator/paginator"
 
 const Users = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
@@ -12,19 +13,12 @@ const Users = (props) => {
   }
   return (
     <div>
-      <div className={stylesUsers.list}>
-        {pages.map((page, index) => (
-          <span
-            key={index}
-            className={
-              props.currentPage === page ? stylesUsers.list_active : null
-            }
-            onClick={() => props.onPageChanged(page)}
-          >
-            {page}
-          </span>
-        ))}
-      </div>
+      <Paginator
+        totalUsersCount={props.totalUsersCount}
+        pageSize={props.pageSize}
+        onPageChanged={props.onPageChanged}
+        currentPage={props.currentPage}
+      />
       {props.users.map((user) => (
         <div key={user.id} className={stylesUsers.container}>
           <div className={stylesUsers.buttonBlock}>
