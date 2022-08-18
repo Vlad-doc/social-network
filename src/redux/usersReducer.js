@@ -1,4 +1,5 @@
 import { usersAPI } from "../api/api"
+import { mappingObject } from "../utils/mappingObject/mappingObject"
 
 const FOLLOW = "FOLLOW"
 const UN_FOLLOW = "UN_FOLLOW"
@@ -22,16 +23,18 @@ const usersReducer = (state = initialState, action) => {
     case FOLLOW:
       return {
         ...state,
-        users: state.users.map((user) =>
-          user.id === action.payload ? { ...user, followed: true } : user,
-        ),
+        users: mappingObject(state.users, action.payload, { followed: true }),
+        // users: state.users.map((user) =>
+        //   user.id === action.payload ? { ...user, followed: true } : user,
+        // ),
       }
     case UN_FOLLOW:
       return {
         ...state,
-        users: state.users.map((user) =>
-          user.id === action.payload ? { ...user, followed: false } : user,
-        ),
+        users: mappingObject(state.users, action.payload, { followed: false }),
+        // users: state.users.map((user) =>
+        //   user.id === action.payload ? { ...user, followed: false } : user,
+        // ),
       }
     case SET_USERS:
       return {
