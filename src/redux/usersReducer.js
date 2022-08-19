@@ -11,7 +11,7 @@ const SET_FOLLOW_PROGRESS = "SET_FOLLOW_PROGRESS"
 
 const initialState = {
   users: [],
-  pageSize: 10,
+  pageSize: 20,
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: false,
@@ -103,7 +103,7 @@ export const requestUsers = (pageSize, page) => async (dispatch) => {
   const response = await usersAPI.loadUsers(pageSize, page)
   dispatch(loadingInProgress(false))
   dispatch(setUsers(response.items))
-  dispatch(setTotalUsersCount(Math.ceil(response.totalCount / 200)))
+  dispatch(setTotalUsersCount(Math.ceil(response.totalCount)))
 }
 
 const userSubscriber = async (dispatch, id, apiRequest, actionCreator) => {
