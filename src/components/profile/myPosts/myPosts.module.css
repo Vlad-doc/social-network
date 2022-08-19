@@ -1,3 +1,5 @@
 .postsBlock {
-  padding: 0 1rem 0;
+  position: absolute;
+  top: 550px;
+  left: 400px;
 }

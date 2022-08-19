@@ -1,5 +1,23 @@
-.ant-pagination {
-  margin-top: 20px;
-  background: red;
-  font-size: 50px;
+:global .ant-pagination {
+  margin-top: 25px;
+  text-align: center;
+}
+:global .ant-pagination-item {
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+:global .ant-pagination-item a {
+  color: wheat;
+}
+:global .ant-pagination-item-active a {
+  color: burlywood;
+}
+
+:global .ant-pagination-item a:hover {
+  color: red;
+}
+:global .ant-pagination-item-link {
+  background-color: none;
 }
