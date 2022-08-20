@@ -38,6 +38,9 @@ export const ProfileInfo = (props) => {
             <div className={profInfoStyle.description}>
               <div className={profInfoStyle.name}>{props.profile.fullName}</div>
               <div className={profInfoStyle.about}>{props.profile.aboutMe}</div>
+              <div className={profInfoStyle.about}>
+                {/* {Array.from( props.profile.contacts).filter((contact !== null) => {})} */}
+              </div>
               <ProfileStatus
                 status={props.status}
                 updateUserStatus={props.updateUserStatus}

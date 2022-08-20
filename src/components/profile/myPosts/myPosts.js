@@ -10,6 +10,7 @@ const maxLength15 = maxLength(15)
 const MyPosts = ({ posts, addPostText }) => {
   const createNewPost = (values) => {
     addPostText(values.newPostText)
+    values.newPostText = ""
   }
   return (
     <div className={postsStyle.postsBlock}>

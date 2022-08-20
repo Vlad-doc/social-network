@@ -1,7 +1,8 @@
 import React from "react"
 import style from "./header.module.css"
 import socialNetworkImg from "../../assets/images/socialImg.png"
-import userPhoto from "../../assets/images/user.png"
+import notFoundPNG from "../../assets/images/not_found.png"
+import logout from "../../assets/images/logout.png"
 import { Link } from "react-router-dom"
 
 function Header(props) {
@@ -12,7 +13,7 @@ function Header(props) {
       {props.auth ? (
         props.userAuth ? (
           <div className={style.userProfile}>
-            <div>
+            <div className={style.description}>
               <div>
                 <Link to={`/profile/${props.userAuth.userId}`}>
                   <img
@@ -20,17 +21,17 @@ function Header(props) {
                     src={
                       props.userAuth.photos.small !== null
                         ? props.userAuth.photos.small
-                        : userPhoto
+                        : notFoundPNG
                     }
                     alt="ava"
                   />
                 </Link>
               </div>
-              <div>{props.userAuth.fullName}</div>
+              <div className={style.userName}>{props.userAuth.fullName}</div>
             </div>
             <div>
               <button className={style.btn} onClick={exit}>
-                Logout
+                <img src={logout} alt="logout" />
               </button>
             </div>
           </div>

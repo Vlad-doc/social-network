@@ -1,6 +1,6 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
-import { Friends } from "./friends/friends"
+// import { Friends } from "./friends/friends"
 import navStyle from "./navbar.module.css"
 import { connect } from "react-redux/es/exports"
 import profIcon from "../../assets/images/gg_profile.png"
@@ -58,12 +58,12 @@ function Navbar(props) {
         </NavLink>
       </div>
 
-      <h4>Friends</h4>
+      {/* <h4>Friends</h4>
       <div className={navStyle.item__friends}>
         {props.friendsPage.friends.map((friend) => (
           <Friends key={friend.id} id={`${friend.id}`} friend={friend} />
         ))}
-      </div>
+      </div> */}
     </nav>
   )
 }

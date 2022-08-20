@@ -9,6 +9,7 @@ import { maxLength, required } from "../../utils/validators/validators"
 function Dialogs({ sendMessageCreator, dialogs, messages }) {
   const addNewMessage = (values) => {
     sendMessageCreator(values.newMessageBody)
+    values.newMessageBody = ""
   }
 
   return (

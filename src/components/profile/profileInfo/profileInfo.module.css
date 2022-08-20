@@ -16,8 +16,8 @@
 .content {
   z-index: 10;
   position: absolute;
-  top: 224px;
-  left: 415px;
+  top: 165px;
+  left: 15px;
 }
 
 .name {
@@ -38,4 +38,5 @@
   font-size: 16px;
   line-height: 15px;
   letter-spacing: -0.045em;
+  margin-top: 10px;
 }
