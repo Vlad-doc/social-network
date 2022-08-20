@@ -3,23 +3,16 @@ import profInfoStyle from "./profileInfo.module.css"
 import notFoundPNG from "../../../assets/images/not_found.png"
 import ProfileStatus from "./profileStatus"
 import { Avatar, Image } from "antd"
+import { objToArr } from "../../../utils/object/objArr"
 
 export const ProfileInfo = (props) => {
+  console.log(props)
   return (
     <>
       {props.profile ? (
         <>
           <div className={profInfoStyle.bcImg}> </div>
           <div className={profInfoStyle.content}>
-            {/* <img
-              src={
-                props.profile.photos.large
-                  ? props.profile.photos.large
-                  : notFoundPNG
-              }
-              alt=""
-              width={"200px"}
-            /> */}
             <Avatar
               src={
                 <Image
@@ -38,7 +31,11 @@ export const ProfileInfo = (props) => {
               <div className={profInfoStyle.name}>{props.profile.fullName}</div>
               <div className={profInfoStyle.about}>{props.profile.aboutMe}</div>
               <div className={profInfoStyle.about}>
-                {/* {Array.from( props.profile.contacts).filter((contact !== null) => {})} */}
+                {objToArr(props.profile.contacts).map((link, index) => (
+                  <a key={index} href={`https://${link}`}>
+                    {link} <br />
+                  </a>
+                ))}
               </div>
               <ProfileStatus
                 status={props.status}

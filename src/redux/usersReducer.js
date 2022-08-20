@@ -1,5 +1,5 @@
 import { usersAPI } from "../api/api"
-import { mappingObject } from "../utils/mappingObject/mappingObject"
+import { mappingObject } from "../utils/object/mappingObject"
 
 const FOLLOW = "FOLLOW"
 const UN_FOLLOW = "UN_FOLLOW"
