@@ -9,7 +9,7 @@ function Header(props) {
   let exit = () => props.logout()
   return (
     <header className={style.header}>
-      <img src={socialNetworkImg} alt="logo" />
+      <img src={socialNetworkImg} alt="logo" className={style.socialIMG} />
       {props.auth ? (
         props.userAuth ? (
           <div className={style.userProfile}>
@@ -40,7 +40,7 @@ function Header(props) {
         )
       ) : (
         <div className={style.link}>
-          <Link to={"/login"}>Login</Link>
+          <Link to={"/login"}>L</Link>
         </div>
       )}
     </header>

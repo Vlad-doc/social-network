@@ -1,5 +1,3 @@
 .postsBlock {
-  position: absolute;
-  top: 480px;
-  left: 15px;
+  width: 720px;
 }

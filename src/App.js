@@ -23,21 +23,23 @@ const App = (props) => {
   return !props.initialized ? (
     <Preloader />
   ) : (
-    <div className="wrapper">
+    <>
       <HeaderContainer />
-      <Navbar />
-      <div className="wrapper-content">
-        <Routes>
-          <Route path="/profile/:userId" element={<ProfileContainer />} />
-          <Route path="/dialogs" element={<DialogsContainer />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/music" element={<Music />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/users" element={<UsersContainer />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
+      <div className="wrapper">
+        <Navbar />
+        <div className="wrapper-content">
+          <Routes>
+            <Route path="/profile/:userId" element={<ProfileContainer />} />
+            <Route path="/dialogs" element={<DialogsContainer />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/music" element={<Music />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/users" element={<UsersContainer />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

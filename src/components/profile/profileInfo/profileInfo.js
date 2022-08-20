@@ -5,7 +5,6 @@ import ProfileStatus from "./profileStatus"
 import { Avatar, Image } from "antd"
 
 export const ProfileInfo = (props) => {
-  console.log(props)
   return (
     <>
       {props.profile ? (

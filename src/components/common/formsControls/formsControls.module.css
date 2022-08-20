@@ -16,3 +16,15 @@
   color: red;
   font-size: 1.5rem;
 }
+
+.input textarea {
+  width: 721px;
+  height: 44px;
+  background: #f7f7f7;
+  border-radius: 20px;
+  padding: 5px 10px 5px 10px;
+  border: none;
+  resize: none;
+  line-height: 30px;
+  overflow: hidden;
+}
