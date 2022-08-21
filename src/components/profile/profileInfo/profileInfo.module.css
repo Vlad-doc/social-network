@@ -1,5 +1,5 @@
 .description {
-  padding: 1rem;
+  padding: 1rem 0;
 }
 
 .status input {
@@ -15,8 +15,8 @@
 
 .content {
   z-index: 10;
-  position: absolute;
-  top: 165px;
+  position: relative;
+  top: -82px;
   left: 15px;
 }
 

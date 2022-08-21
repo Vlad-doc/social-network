@@ -1,38 +1,42 @@
-.item {
-  width: 70px;
-  display: flex;
-  align-items: center;
-  height: 32px;
-  gap: 13px;
-}
-
-.item a {
-  font-family: "Lucida Grande";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 15px;
-  letter-spacing: -0.045em;
-  color: #000000;
-  text-decoration: none;
-}
-
-.item a.active {
-  color: rgb(0, 162, 255);
-}
-
 .item__friends {
+  width: 28%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 5px;
 }
 
 .item__friends_friend {
-  margin-bottom: 1rem;
-  width: calc(100% / 3);
-  text-align: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
   font-size: 12px;
+  justify-content: space-between;
 }
+
 .item__friends_friend img {
   width: 30px;
+}
+
+.item__friends_friend_name {
+  font-family: "Lucida Grande";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 13px;
+  text-align: right;
+  letter-spacing: -0.045em;
+  color: #000000;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.mesBlock img {
+  width: 15px;
 }
