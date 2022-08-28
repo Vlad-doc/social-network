@@ -1,5 +1,5 @@
 import "./App.css"
-import "antd/dist/antd.css"
+import "antd/dist/antd.min.css"
 import { Routes, Route } from "react-router-dom"
 import Navbar from "./components/navbar/navbar"
 import { News } from "./components/news/news"
