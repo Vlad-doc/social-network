@@ -1,4 +1,5 @@
 import React from "react"
+import { useSelector } from "react-redux"
 import { Field, reduxForm } from "redux-form"
 import { maxLength, required } from "../../../utils/validators/validators"
 import { TextArea } from "../../common/formsControls/formsControls"
@@ -8,8 +9,11 @@ import Post from "./post/post"
 const maxLength15 = maxLength(15)
 
 const MyPosts = ({ posts, addPostText }) => {
+  const auth = useSelector((state) => state.auth.isAuth)
   const createNewPost = (values) => {
-    addPostText(values.newPostText)
+    if (auth) {
+      addPostText(values.newPostText)
+    }
     values.newPostText = ""
   }
   return (

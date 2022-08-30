@@ -18,6 +18,13 @@ export class ProfileContainer extends Component {
     this.props.getUserData(userId)
     this.props.getUserStatus(userId)
   }
+  componentDidUpdate(prevProfile) {
+    const { userId } = this.props.params
+    if (userId !== prevProfile.params.userId) {
+      this.props.getUserData(userId)
+      this.props.getUserStatus(userId)
+    }
+  }
 
   render() {
     return (

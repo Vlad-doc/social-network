@@ -2,7 +2,7 @@ import React from "react"
 import { ProfileInfo } from "./profileInfo/profileInfo"
 import profStyle from "./profile.module.css"
 import MyPostsContainer from "./myPosts/myPostsContainer"
-import Friends from "../friends/friends"
+// import Friends from "../friends/friends"
 
 function Profile(props) {
   return (
@@ -14,7 +14,7 @@ function Profile(props) {
       />
       <div className={profStyle.friendsBlock}>
         <MyPostsContainer />
-        <Friends />
+        {/* <Friends /> */}
       </div>
     </div>
   )

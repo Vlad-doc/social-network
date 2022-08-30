@@ -6,7 +6,6 @@ import { Avatar, Image } from "antd"
 import { objToArr } from "../../../utils/object/objArr"
 
 export const ProfileInfo = (props) => {
-  console.log(props)
   return (
     <>
       {props.profile ? (
@@ -16,11 +15,7 @@ export const ProfileInfo = (props) => {
             <Avatar
               src={
                 <Image
-                  src={
-                    props.profile.photos.large
-                      ? props.profile.photos.large
-                      : notFoundPNG
-                  }
+                  src={props.profile.photos.large || notFoundPNG}
                   style={{ width: "100%", height: "100%" }}
                 />
               }
