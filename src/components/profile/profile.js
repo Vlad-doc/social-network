@@ -11,6 +11,8 @@ function Profile(props) {
         profile={props.profile}
         status={props.status}
         updateUserStatus={props.updateUserStatus}
+        setPhoto={props.setPhoto}
+        auth={props.auth}
       />
       <div className={profStyle.friendsBlock}>
         <MyPostsContainer />
