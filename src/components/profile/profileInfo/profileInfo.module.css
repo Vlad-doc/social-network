@@ -26,8 +26,6 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 19px;
-  /* identical to box height */
-
   letter-spacing: -0.045em;
 }
 
@@ -39,4 +37,17 @@
   line-height: 15px;
   letter-spacing: -0.045em;
   margin-top: 10px;
+}
+
+.labelAvatar {
+  display: block;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  top: -24px;
+  background-image: url("../../../assets/images/freeIconAddImage.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  cursor: pointer;
 }

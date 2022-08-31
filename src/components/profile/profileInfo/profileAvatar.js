@@ -1,13 +1,11 @@
 import React from "react"
+import style from "./profileInfo.module.css"
 import { Avatar, Image } from "antd"
 import notFoundPNG from "../../../assets/images/not_found.png"
 
-const ProfileAvatar = ({ profile, setPhoto, auth }) => {
-  console.log(profile)
-  console.log(auth)
+const ProfileAvatar = ({ profile, setPhoto, auth, ...props }) => {
   const changePhoto = (e) => {
     setPhoto(e.target.files[0])
-    console.log(e.target.files[0])
   }
   return (
     <>
@@ -21,20 +19,8 @@ const ProfileAvatar = ({ profile, setPhoto, auth }) => {
         size={170}
         style={{ backgroundColor: "#f5f5f5" }}
       />
-      {auth ? (
-        <label
-          style={{
-            display: "block",
-            width: "20px",
-            height: "10px",
-            border: "1px solid black",
-            background: "red",
-            position: "relative",
-            top: "-15px",
-            left: "75px",
-            cursor: "pointer",
-          }}
-        >
+      {props.userAuth.userId === +props.params.userId ? (
+        <label className={style.labelAvatar}>
           <input
             accept="image/png, image/jpeg"
             type={"file"}

@@ -1,12 +1,15 @@
-import React from "react"
+import React, { useEffect } from "react"
 import style from "./header.module.css"
 import socialNetworkImg from "../../assets/images/socialImg.png"
 import notFoundPNG from "../../assets/images/not_found.png"
 import logout from "../../assets/images/logout.png"
 import { Link } from "react-router-dom"
+import { connect } from "react-redux"
+import { setPhoto } from "../../redux/profileReducer"
 
 function Header(props) {
   let exit = () => props.logout()
+
   return (
     <header className={style.header}>
       <img src={socialNetworkImg} alt="logo" className={style.socialIMG} />
@@ -47,4 +50,4 @@ function Header(props) {
   )
 }
 
-export default Header
+export default connect(null, { setPhoto })(Header)

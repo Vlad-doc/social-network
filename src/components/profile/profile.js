@@ -8,6 +8,7 @@ function Profile(props) {
   return (
     <div className={profStyle.content}>
       <ProfileInfo
+        {...props}
         profile={props.profile}
         status={props.status}
         updateUserStatus={props.updateUserStatus}
