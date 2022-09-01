@@ -12,7 +12,6 @@ import {
 const getParams = (WrapperContainer) => (props) => {
   return <WrapperContainer {...props} params={useParams("/profile")} />
 }
-
 export class ProfileContainer extends Component {
   componentDidMount() {
     const { userId } = this.props.params
@@ -26,7 +25,6 @@ export class ProfileContainer extends Component {
       this.props.getUserStatus(userId)
     }
   }
-
   render() {
     return (
       <Profile

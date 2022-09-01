@@ -16,7 +16,7 @@ function Profile(props) {
         auth={props.auth}
       />
       <div className={profStyle.friendsBlock}>
-        <MyPostsContainer />
+        <MyPostsContainer {...props} />
         {/* <Friends /> */}
       </div>
     </div>

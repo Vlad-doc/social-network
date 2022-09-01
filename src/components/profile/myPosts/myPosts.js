@@ -8,7 +8,7 @@ import Post from "./post/post"
 
 const maxLength15 = maxLength(15)
 
-const MyPosts = ({ posts, addPostText }) => {
+const MyPosts = ({ posts, addPostText, ...props }) => {
   const auth = useSelector((state) => state.auth.isAuth)
   const createNewPost = (values) => {
     if (auth) {
@@ -19,7 +19,10 @@ const MyPosts = ({ posts, addPostText }) => {
   return (
     <div className={postsStyle.postsBlock}>
       <h3>My posts</h3>
-      <PostsReduxForm onSubmit={createNewPost} />
+      {props.userAuth.userId === +props.params.userId ? (
+        <PostsReduxForm onSubmit={createNewPost} />
+      ) : null}
+
       <div className={postsStyle.posts}>
         {posts.map((post) => (
           <Post
