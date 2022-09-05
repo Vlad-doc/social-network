@@ -15,17 +15,18 @@ const ProfileStatus = (props) => {
   return (
     <div className={profInfoStyle.status}>
       {hide ? (
-        <h4 onDoubleClick={handleChange}>{props.status || "---"}</h4>
+        <>
+          <b>Status: </b>
+          <h4 onDoubleClick={handleChange}>{props.status || "---"}</h4>
+        </>
       ) : (
-        <div>
-          <input
-            type="text"
-            autoFocus={true}
-            value={props.status ? props.status : ""}
-            onBlur={handleChange}
-            onChange={changeStatus}
-          />
-        </div>
+        <input
+          type="text"
+          autoFocus={true}
+          value={props.status ? props.status : ""}
+          onBlur={handleChange}
+          onChange={changeStatus}
+        />
       )}
     </div>
   )

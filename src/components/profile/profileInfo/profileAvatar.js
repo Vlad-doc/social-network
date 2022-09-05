@@ -3,7 +3,8 @@ import style from "./profileInfo.module.css"
 import { Avatar, Image } from "antd"
 import notFoundPNG from "../../../assets/images/not_found.png"
 
-const ProfileAvatar = ({ profile, setPhoto, userAuth, ...props }) => {
+const ProfileAvatar = ({ profile, setPhoto, isHolder }) => {
+  console.log(isHolder)
   const changePhoto = (e) => {
     setPhoto(e.target.files[0])
   }
@@ -19,7 +20,8 @@ const ProfileAvatar = ({ profile, setPhoto, userAuth, ...props }) => {
         size={170}
         style={{ backgroundColor: "#f5f5f5" }}
       />
-      {userAuth.id === +props.params.userId ? (
+
+      {isHolder && (
         <label className={style.labelAvatar}>
           <input
             accept="image/png, image/jpeg"
@@ -28,7 +30,7 @@ const ProfileAvatar = ({ profile, setPhoto, userAuth, ...props }) => {
             style={{ display: "none" }}
           />
         </label>
-      ) : null}
+      )}
     </>
   )
 }

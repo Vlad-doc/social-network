@@ -1,9 +1,9 @@
 import React from "react"
 import style from "./profileInfo.module.css"
 import ProfileStatus from "./profileStatus"
-
 import ProfileAvatar from "./profileAvatar"
-import ProfileDesc from "./profileDesc"
+import ProfileData from "./profileDesc"
+import Preloader from "../../common/preloader/preloader"
 
 export const ProfileInfo = (props) => {
   return (
@@ -13,7 +13,7 @@ export const ProfileInfo = (props) => {
           <div className={style.bcImg}> </div>
           <div className={style.content}>
             <ProfileAvatar {...props} />
-            <ProfileDesc {...props} />
+            <ProfileData {...props} />
             <ProfileStatus
               status={props.status}
               updateUserStatus={props.updateUserStatus}
@@ -21,7 +21,7 @@ export const ProfileInfo = (props) => {
           </div>
         </>
       ) : (
-        props.profile
+        <Preloader />
       )}
     </>
   )

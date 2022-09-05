@@ -5,6 +5,7 @@ import MyPostsContainer from "./myPosts/myPostsContainer"
 // import Friends from "../friends/friends"
 
 function Profile(props) {
+  console.log(props.isHolder)
   return (
     <div className={profStyle.content}>
       <ProfileInfo
@@ -13,7 +14,7 @@ function Profile(props) {
         status={props.status}
         updateUserStatus={props.updateUserStatus}
         setPhoto={props.setPhoto}
-        userAuth={props.userAuth}
+        isHolder={props.isHolder}
       />
       <div className={profStyle.friendsBlock}>
         <MyPostsContainer {...props} />

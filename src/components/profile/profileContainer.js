@@ -1,7 +1,7 @@
 import { Component } from "react"
 import Profile from "./profile"
 import { connect } from "react-redux"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import {
   getUserData,
   getUserStatus,
@@ -11,19 +11,34 @@ import {
 import { getAuthorizedUserDetails } from "../../redux/authReducer"
 
 const getParams = (WrapperContainer) => (props) => {
-  return <WrapperContainer {...props} params={useParams("/profile")} />
+  return (
+    <WrapperContainer
+      {...props}
+      params={useParams("/profile")}
+      navigate={useNavigate()}
+    />
+  )
 }
 export class ProfileContainer extends Component {
-  componentDidMount() {
-    const { userId } = this.props.params
+  updateProfile() {
+    let { userId } = this.props.params
+    const navigate = this.props.navigate
+    if (!userId) {
+      userId = this.props.userAuth.id
+      if (!userId) {
+        navigate("/login")
+      }
+    }
     this.props.getUserData(userId)
     this.props.getUserStatus(userId)
   }
+  componentDidMount() {
+    console.log(this.props.userAuth, this.props.params.userId)
+    this.updateProfile()
+  }
   componentDidUpdate(prevProfile) {
-    const { userId } = this.props.params
-    if (userId !== prevProfile.params.userId) {
-      this.props.getUserData(userId)
-      this.props.getUserStatus(userId)
+    if (this.props.params.userId !== prevProfile.params.userId) {
+      this.updateProfile()
     }
   }
   render() {
@@ -31,7 +46,7 @@ export class ProfileContainer extends Component {
       <Profile
         {...this.props}
         profile={this.props.profile}
-        userAuth={this.props.userAuth}
+        isHolder={this.props.params.userId}
         status={this.props.status}
         updateUserStatus={this.props.updateUserStatus}
         setPhoto={this.props.setPhoto}

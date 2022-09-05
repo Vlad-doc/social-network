@@ -1,9 +1,12 @@
 .description {
-  padding: 1rem 0;
 }
 
 .status input {
   margin-top: 1.33rem;
+}
+
+.status h4 {
+  display: inline;
 }
 
 .bcImg {
@@ -20,16 +23,16 @@
   left: 15px;
 }
 
-.name {
+/* .name {
   font-family: "Lucida Grande";
   font-style: normal;
-  font-weight: 700;
+  font-weight: bold;
   font-size: 20px;
   line-height: 19px;
   letter-spacing: -0.045em;
-}
+} */
 
-.about {
+/* .about {
   font-family: "Lucida Grande";
   font-style: normal;
   font-weight: 400;
@@ -37,7 +40,7 @@
   line-height: 15px;
   letter-spacing: -0.045em;
   margin-top: 10px;
-}
+} */
 
 .labelAvatar {
   display: block;
@@ -48,6 +51,9 @@
   background-image: url("../../../assets/images/freeIconAddImage.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
-
   cursor: pointer;
+}
+
+.contacts {
+  padding-left: 15px;
 }
