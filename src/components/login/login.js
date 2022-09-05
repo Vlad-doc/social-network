@@ -52,7 +52,7 @@ const Login = (props) => {
   }
 
   if (props.auth) {
-    return <Navigate to={`/profile/${props.userId}`} />
+    return <Navigate to={`/profile`} />
   }
 
   return (
