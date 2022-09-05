@@ -9,7 +9,6 @@ const initialState = {
   email: null,
   login: null,
   isAuth: false,
-  authUser: null,
 }
 
 const authReducer = (state = initialState, { type, payload }) => {
@@ -48,8 +47,6 @@ export const getAuthorizedUserDetails = () => async (dispatch) => {
   } else if (response.resultCode === 1) {
     return null
   }
-  const responseUserProfile = await authAPI.getUserProfile(response.data.id)
-  dispatch(getAuthUser(responseUserProfile))
 }
 
 export const login = (email, password, rememberMe) => async (dispatch) => {

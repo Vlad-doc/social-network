@@ -13,7 +13,7 @@ function Profile(props) {
         status={props.status}
         updateUserStatus={props.updateUserStatus}
         setPhoto={props.setPhoto}
-        auth={props.auth}
+        userAuth={props.userAuth}
       />
       <div className={profStyle.friendsBlock}>
         <MyPostsContainer {...props} />
