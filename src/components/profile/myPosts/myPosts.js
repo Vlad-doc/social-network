@@ -8,7 +8,7 @@ import Post from "./post/post"
 
 const maxLength15 = maxLength(15)
 
-const MyPosts = ({ posts, addPostText, ...props }) => {
+const MyPosts = ({ posts, addPostText }) => {
   const auth = useSelector((state) => state.auth.isAuth)
   const createNewPost = (values) => {
     if (auth) {

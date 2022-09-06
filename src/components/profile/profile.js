@@ -13,7 +13,6 @@ function Profile(props) {
         status={props.status}
         updateUserStatus={props.updateUserStatus}
         setPhoto={props.setPhoto}
-        isHolder={props.isHolder}
       />
       <div className={profStyle.friendsBlock}>
         <MyPostsContainer {...props} />

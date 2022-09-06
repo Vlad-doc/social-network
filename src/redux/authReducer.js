@@ -22,7 +22,7 @@ const authReducer = (state = initialState, { type, payload }) => {
   }
 }
 
-export const setAuthReducer = (email, id, login, isAuth) => ({
+const setAuthReducer = (email, id, login, isAuth) => ({
   type: SET_USER_AUTH,
   payload: { email, id, login, isAuth },
 })

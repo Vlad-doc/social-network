@@ -19,7 +19,7 @@ const getParams = (WrapperContainer) => (props) => {
     />
   )
 }
-export class ProfileContainer extends Component {
+class ProfileContainer extends Component {
   updateProfile() {
     let { userId } = this.props.params
     const navigate = this.props.navigate
@@ -46,15 +46,7 @@ export class ProfileContainer extends Component {
     }
   }
   render() {
-    return (
-      <Profile
-        {...this.props}
-        profile={this.props.profile}
-        status={this.props.status}
-        updateUserStatus={this.props.updateUserStatus}
-        setPhoto={this.props.setPhoto}
-      />
-    )
+    return <Profile {...this.props} />
   }
 }
 
