@@ -24,7 +24,10 @@ export class ProfileContainer extends Component {
     let { userId } = this.props.params
     const navigate = this.props.navigate
     if (!userId) {
-      userId = this.props.userAuth.id
+      //userId = this.props.userAuth.id
+      userId = this.props.userAuth.isAuth
+        ? this.props.userAuth.id
+        : this.props.profile.userId
       if (!userId) {
         navigate("/login")
       }
@@ -36,10 +39,10 @@ export class ProfileContainer extends Component {
     this.updateProfile()
   }
   componentDidUpdate(prevProfile) {
-    console.log(this.props.params.userId)
-    console.log(prevProfile.params.userId)
-    if (this.props.params.userId != prevProfile.params.userId) {
-      this.updateProfile()
+    if (this.props.params.userId !== prevProfile.params.userId) {
+      if (this.props.userAuth.id) {
+        this.updateProfile()
+      }
     }
   }
   render() {
@@ -47,7 +50,6 @@ export class ProfileContainer extends Component {
       <Profile
         {...this.props}
         profile={this.props.profile}
-        isHolder={!this.props.params.userId}
         status={this.props.status}
         updateUserStatus={this.props.updateUserStatus}
         setPhoto={this.props.setPhoto}

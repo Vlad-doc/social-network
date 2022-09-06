@@ -2,7 +2,6 @@ import { stopSubmit } from "redux-form"
 import { authAPI } from "../api/api"
 
 const SET_USER_AUTH = "SET_USER_AUTH"
-const GET_AUTH_USER = "GET_AUTH_USER"
 
 const initialState = {
   id: null,
@@ -17,33 +16,22 @@ const authReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         ...payload,
-        isAuth: !state.isAuth,
-      }
-    case GET_AUTH_USER:
-      return {
-        ...state,
-        authUser: payload,
       }
     default:
       return state
   }
 }
 
-export const setAuthReducer = (email, id, login) => ({
+export const setAuthReducer = (email, id, login, isAuth) => ({
   type: SET_USER_AUTH,
-  payload: { email, id, login },
-})
-
-export const getAuthUser = (data) => ({
-  type: GET_AUTH_USER,
-  payload: data,
+  payload: { email, id, login, isAuth },
 })
 
 export const getAuthorizedUserDetails = () => async (dispatch) => {
   const response = await authAPI.me()
   if (response.resultCode === 0) {
     const { email, id, login } = response.data
-    dispatch(setAuthReducer(email, id, login))
+    dispatch(setAuthReducer(email, id, login, true))
   } else if (response.resultCode === 1) {
     return null
   }
@@ -65,7 +53,7 @@ export const login = (email, password, rememberMe) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   const response = await authAPI.logout()
   if (response.data.resultCode === 0) {
-    dispatch(setAuthReducer(null, null, null))
+    dispatch(setAuthReducer(null, null, null, false))
   }
 }
 

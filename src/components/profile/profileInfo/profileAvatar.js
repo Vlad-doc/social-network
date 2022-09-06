@@ -20,16 +20,14 @@ const ProfileAvatar = ({ profile, setPhoto, isHolder }) => {
         style={{ backgroundColor: "#f5f5f5" }}
       />
 
-      {isHolder ? (
-        <label className={style.labelAvatar}>
-          <input
-            accept="image/png, image/jpeg"
-            type={"file"}
-            onChange={changePhoto}
-            style={{ display: "none" }}
-          />
-        </label>
-      ) : null}
+      <label className={style.labelAvatar}>
+        <input
+          accept="image/png, image/jpeg"
+          type={"file"}
+          onChange={changePhoto}
+          style={{ display: "none" }}
+        />
+      </label>
     </>
   )
 }
