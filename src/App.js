@@ -19,7 +19,6 @@ const App = (props) => {
   useLayoutEffect(() => {
     props.initializeAPP()
   })
-
   return !props.initialized ? (
     <Preloader />
   ) : (
@@ -42,7 +41,6 @@ const App = (props) => {
     </div>
   )
 }
-
 export default connect(
   (state) => ({
     initialized: state.app.initialized,

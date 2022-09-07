@@ -1,6 +1,6 @@
 import React from "react"
 import { useState } from "react"
-import profInfoStyle from "./profileInfo.module.css"
+import profInfoStyle from "../profileInfo.module.css"
 
 const ProfileStatus = ({ status, updateUserStatus }) => {
   const [hide, setHide] = useState(true)

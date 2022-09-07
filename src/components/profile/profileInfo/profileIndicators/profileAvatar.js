@@ -1,7 +1,7 @@
 import React from "react"
-import style from "./profileInfo.module.css"
+import style from "../profileInfo.module.css"
 import { Avatar, Image } from "antd"
-import notFoundPNG from "../../../assets/images/not_found.png"
+import notFoundPNG from "../../../../assets/images/not_found.png"
 
 const ProfileAvatar = ({ profile, setPhoto, params, userAuth }) => {
   const changePhoto = (e) => {

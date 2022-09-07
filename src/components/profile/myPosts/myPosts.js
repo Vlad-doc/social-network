@@ -18,9 +18,7 @@ const MyPosts = ({ posts, addPostText, userAuth, params }) => {
   return (
     <div className={postsStyle.postsBlock}>
       <h3>My posts</h3>
-
-      <PostsReduxForm onSubmit={createNewPost} />
-
+      {auth && !params.userId && <PostsReduxForm onSubmit={createNewPost} />}
       <div className={postsStyle.posts}>
         {posts.map((post) => (
           <Post

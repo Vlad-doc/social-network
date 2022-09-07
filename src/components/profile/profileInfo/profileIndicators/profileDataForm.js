@@ -1,14 +1,29 @@
-import React from "react"
-import style from "./profileInfo.module.css"
+import { Field, reduxForm } from "redux-form"
+import style from "../profileInfo.module.css"
 
-const ProfileData = ({ profile }) => {
+const ProfileDataForm = ({ profile }) => {
   return (
-    <div className={style.description}>
+    <form action="">
+      <button>save</button>
       <div>
-        <b> Full name: </b> {profile.fullName}
+        <b> Full name: </b>
+        <Field
+          name="fullName"
+          component="input"
+          type="text"
+          placeholder="Full Name"
+        />
       </div>
       <div>
-        <b>Looking for a job:</b> {profile.lookingForAJob ? "yes" : "no"}
+        <b>Looking for a job:</b>
+        <label>
+          <Field
+            name="lookingForAJob"
+            component="input"
+            type="radio"
+            value={profile.lookingForAJob}
+          />
+        </label>
       </div>
       {profile.lookingForAJob && (
         <div>
@@ -29,7 +44,7 @@ const ProfileData = ({ profile }) => {
           />
         ))}
       </div>
-    </div>
+    </form>
   )
 }
 
@@ -41,4 +56,4 @@ const Contact = ({ contactTitle, contactValue }) => {
   )
 }
 
-export default ProfileData
+export default reduxForm({ form: "edit-form" })(ProfileDataForm)

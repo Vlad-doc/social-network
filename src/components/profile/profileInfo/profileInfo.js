@@ -1,8 +1,8 @@
 import React from "react"
 import style from "./profileInfo.module.css"
-import ProfileStatus from "./profileStatus"
-import ProfileAvatar from "./profileAvatar"
-import ProfileData from "./profileData"
+import ProfileStatus from "./profileIndicators/profileStatus"
+import ProfileAvatar from "./profileIndicators/profileAvatar"
+import ProfileData from "./profileIndicators/profileData"
 import Preloader from "../../common/preloader/preloader"
 
 export const ProfileInfo = (props) => {
@@ -17,7 +17,11 @@ export const ProfileInfo = (props) => {
           params={props.params}
           userAuth={props.userAuth}
         />
-        <ProfileData profile={props.profile} />
+        <ProfileData
+          profile={props.profile}
+          params={props.params}
+          userAuth={props.userAuth}
+        />
         <ProfileStatus
           status={props.status}
           updateUserStatus={props.updateUserStatus}

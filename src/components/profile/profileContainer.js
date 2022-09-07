@@ -25,7 +25,6 @@ class ProfileContainer extends Component {
     let { userId } = this.props.params
     const navigate = this.props.navigate
     if (!userId) {
-      //userId = this.props.userAuth.id
       userId = this.props.userAuth.isAuth
         ? this.props.userAuth.id
         : this.props.profile.userId
@@ -37,6 +36,9 @@ class ProfileContainer extends Component {
     this.props.getUserStatus(userId)
   }
   componentDidMount() {
+    if (!this.props.userAuth.isAuth) {
+      if (!this.props.params.userId) return null
+    }
     this.updateProfile()
   }
   componentDidUpdate(prevProfile) {
