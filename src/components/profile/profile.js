@@ -9,13 +9,17 @@ function Profile(props) {
     <div className={profStyle.content}>
       <ProfileInfo
         {...props}
-        profile={props.profile}
+        profile={props.profile.profile}
         status={props.status}
         updateUserStatus={props.updateUserStatus}
         setPhoto={props.setPhoto}
       />
       <div className={profStyle.friendsBlock}>
-        <MyPostsContainer {...props} />
+        <MyPostsContainer
+          {...props}
+          posts={props.profile.posts}
+          addPostText={props.addPostText}
+        />
         {/* <Friends /> */}
       </div>
     </div>

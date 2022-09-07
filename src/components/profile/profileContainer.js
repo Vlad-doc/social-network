@@ -7,6 +7,7 @@ import {
   getUserStatus,
   updateUserStatus,
   setPhoto,
+  addPostText,
 } from "../../redux/profileReducer"
 import { getAuthorizedUserDetails } from "../../redux/authReducer"
 
@@ -51,7 +52,7 @@ class ProfileContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  profile: state.profilePage.profile,
+  profile: state.profilePage,
   userAuth: state.auth,
   status: state.profilePage.status,
 })
@@ -62,4 +63,5 @@ export default connect(mapStateToProps, {
   updateUserStatus,
   setPhoto,
   getAuthorizedUserDetails,
+  addPostText,
 })(getParams(ProfileContainer))
