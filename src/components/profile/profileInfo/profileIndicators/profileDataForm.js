@@ -1,12 +1,13 @@
 import { Field, reduxForm } from "redux-form"
-import style from "../profileInfo.module.css"
+import style from "../../profile.module.css"
 
-const ProfileDataForm = ({ profile }) => {
+const ProfileDataForm = ({ profile, handleSubmit }) => {
   return (
-    <form action="">
+    <form onSubmit={handleSubmit} className={style.profileForm}>
       <button>save</button>
+
       <div>
-        <b> Full name: </b>
+        <label> Full name: </label>
         <Field
           name="fullName"
           component="input"
@@ -14,46 +15,61 @@ const ProfileDataForm = ({ profile }) => {
           placeholder="Full Name"
         />
       </div>
+
       <div>
-        <b>Looking for a job:</b>
-        <label>
-          <Field
-            name="lookingForAJob"
-            component="input"
-            type="radio"
-            value={profile.lookingForAJob}
-          />
-        </label>
+        <label>Looking for a job:</label>
+        <Field
+          name="lookingForAJob"
+          id="lookingForAJob"
+          component="input"
+          type="checkbox"
+        />
       </div>
-      {profile.lookingForAJob && (
-        <div>
-          <b>My skills:</b> {profile.lookingForAJobDescription}
-        </div>
-      )}
+
       <div>
-        <b>About me: </b>
-        {profile.aboutMe}
+        <label>My skills:</label>
+        <Field
+          name="lookingForAJobDescription"
+          component="input"
+          type="textArea"
+          placeholder="My skills"
+        />
       </div>
+
       <div>
-        <b>Contacts: </b>
-        {Object.keys(profile.contacts).map((key) => (
-          <Contact
-            key={key}
-            contactTitle={key}
-            contactValue={profile.contacts[key]}
-          />
-        ))}
+        <label>About me: </label>
+        <Field
+          name="aboutMe"
+          component="input"
+          type="textArea"
+          placeholder="About me"
+        />
       </div>
+      <b>Contacts: </b>
+
+      {Object.keys(profile.contacts).map((key) => (
+        <Contact
+          key={key}
+          contactTitle={key}
+          contactValue={profile.contacts[key]}
+        />
+      ))}
     </form>
   )
 }
 
-const Contact = ({ contactTitle, contactValue }) => {
+const Contact = ({ contactTitle }) => {
   return (
-    <div className={style.contacts}>
-      <b>{contactTitle}: </b> {contactValue}
+    <div>
+      <label>{contactTitle}</label>
+      <Field
+        name={contactTitle}
+        component="input"
+        type="text"
+        placeholder="https://"
+      />
     </div>
   )
 }
 
-export default reduxForm({ form: "edit-form" })(ProfileDataForm)
+export default reduxForm({ form: "edit-profile" })(ProfileDataForm)

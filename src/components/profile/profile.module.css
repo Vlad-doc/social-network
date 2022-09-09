@@ -5,3 +5,17 @@
   column-gap: 30px;
   justify-content: space-between;
 }
+
+.profileForm div {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  height: 25px;
+  line-height: 25px;
+  margin-bottom: 10px;
+}
+.profileForm input {
+  box-sizing: border-box;
+  padding-left: 5px;
+}
