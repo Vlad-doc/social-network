@@ -21,6 +21,7 @@ export const ProfileInfo = (props) => {
           profile={props.profile}
           params={props.params}
           userAuth={props.userAuth}
+          setProfileData={props.setProfileData}
         />
         <ProfileStatus
           status={props.status}

@@ -34,9 +34,6 @@ export const usersAPI = {
   setUserUnFollow(id) {
     return instance.delete(`follow/${id}`).then((response) => response.data)
   },
-  getUserProfile(id) {
-    return profileAPI.getUserProfile(id)
-  },
 }
 
 export const profileAPI = {
@@ -59,5 +56,8 @@ export const profileAPI = {
         },
       })
       .then((response) => response.data)
+  },
+  saveUserData(profile) {
+    return instance.put(`/profile`, profile)
   },
 }

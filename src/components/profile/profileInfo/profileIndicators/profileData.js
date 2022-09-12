@@ -3,9 +3,12 @@ import { useState } from "react"
 import style from "../profileInfo.module.css"
 import ProfileDataForm from "./profileDataForm"
 
-const ProfileData = ({ profile, userAuth, params }) => {
+const ProfileData = ({ profile, userAuth, params, setProfileData }) => {
   const [editMode, setEditMode] = useState(true)
-
+  const changeInfo = (dataForm) => {
+    setProfileData(dataForm)
+    setEditMode(true)
+  }
   return (
     <div className={style.description}>
       {editMode ? (
@@ -40,7 +43,11 @@ const ProfileData = ({ profile, userAuth, params }) => {
           </div>
         </>
       ) : (
-        <ProfileDataForm profile={profile} />
+        <ProfileDataForm
+          profile={profile}
+          onSubmit={changeInfo}
+          initialValues={profile}
+        />
       )}
     </div>
   )

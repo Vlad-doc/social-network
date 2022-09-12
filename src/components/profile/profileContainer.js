@@ -8,6 +8,7 @@ import {
   updateUserStatus,
   setPhoto,
   addPostText,
+  setProfileData,
 } from "../../redux/profileReducer"
 import { getAuthorizedUserDetails } from "../../redux/authReducer"
 
@@ -66,4 +67,5 @@ export default connect(mapStateToProps, {
   setPhoto,
   getAuthorizedUserDetails,
   addPostText,
+  setProfileData,
 })(getParams(ProfileContainer))
