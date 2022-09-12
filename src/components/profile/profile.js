@@ -6,8 +6,6 @@ import MyPostsContainer from "./myPosts/myPostsContainer"
 // import Friends from "../friends/friends"
 
 function Profile(props) {
-  console.log(props)
-  console.log(props.params.userId)
   if (!props.userAuth.isAuth && props.params.userId === null) return null
 
   return (

@@ -48,27 +48,17 @@ const ProfileDataForm = ({ profile, handleSubmit }) => {
       <b>Contacts: </b>
 
       {Object.keys(profile.contacts).map((key) => (
-        <Contact
-          key={key}
-          contactTitle={key}
-          contactValue={profile.contacts[key]}
-        />
+        <div key={key}>
+          <label>{key}</label>
+          <Field
+            name={`contacts.${key}`}
+            component="input"
+            type="text"
+            placeholder="https://"
+          />
+        </div>
       ))}
     </form>
-  )
-}
-
-const Contact = ({ contactTitle }) => {
-  return (
-    <div>
-      <label>{contactTitle}</label>
-      <Field
-        name={contactTitle}
-        component="input"
-        type="text"
-        placeholder="https://"
-      />
-    </div>
   )
 }
 
