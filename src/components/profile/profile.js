@@ -6,7 +6,7 @@ import MyPostsContainer from "./myPosts/myPostsContainer"
 // import Friends from "../friends/friends"
 
 function Profile(props) {
-  if (!props.userAuth.isAuth && props.params.userId === null) return null
+  if (!props.userAuth.isAuth && !props.params.userId) return null
 
   return (
     <div className={profStyle.content}>

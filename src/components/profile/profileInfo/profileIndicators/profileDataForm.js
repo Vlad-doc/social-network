@@ -1,11 +1,12 @@
 import { Field, reduxForm } from "redux-form"
 import style from "../../profile.module.css"
 
-const ProfileDataForm = ({ profile, handleSubmit }) => {
+const ProfileDataForm = ({ profile, handleSubmit, error }) => {
+  console.log(error)
   return (
     <form onSubmit={handleSubmit} className={style.profileForm}>
       <button>save</button>
-
+      <div>{error && <strong>{error}</strong>}</div>
       <div>
         <label> Full name: </label>
         <Field

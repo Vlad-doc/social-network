@@ -2,11 +2,13 @@ import React from "react"
 import { useState } from "react"
 import profInfoStyle from "../profileInfo.module.css"
 
-const ProfileStatus = ({ status, updateUserStatus }) => {
+const ProfileStatus = ({ status, updateUserStatus, params }) => {
   const [hide, setHide] = useState(true)
   const [locStatus, setLocStatus] = useState(status)
   const handleChange = () => {
-    setHide((prevState) => !prevState)
+    if (!params.userId) {
+      setHide((prevState) => !prevState)
+    }
   }
   const changeStatus = (e) => {
     setLocStatus(e.target.value)
