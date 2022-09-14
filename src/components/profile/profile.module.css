@@ -7,11 +7,11 @@
 }
 
 .profileForm div {
-  width: 40%;
+  width: 60%;
   display: flex;
   justify-content: space-between;
   align-content: center;
-  height: 25px;
+  height: auto;
   line-height: 25px;
   margin-bottom: 10px;
 }

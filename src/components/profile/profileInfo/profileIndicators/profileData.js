@@ -6,8 +6,7 @@ import ProfileDataForm from "./profileDataForm"
 const ProfileData = ({ profile, userAuth, params, setProfileData }) => {
   const [editMode, setEditMode] = useState(true)
   const changeInfo = (dataForm) => {
-    setProfileData(dataForm)
-    setEditMode(true)
+    setProfileData(dataForm).then(() => setEditMode(true))
   }
   return (
     <div className={style.description}>

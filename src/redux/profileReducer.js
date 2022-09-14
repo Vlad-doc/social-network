@@ -95,6 +95,8 @@ export const setProfileData = (profile) => async (dispatch, getState) => {
         _error: response.data.messages[0] || "Some ERROR",
       }),
     )
+    return Promise.reject(response.data.messages[0])
   }
 }
+
 export default profileReducer

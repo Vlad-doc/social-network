@@ -11,6 +11,17 @@ export const TextArea = ({ input, meta: { touched, error } }) => {
     </div>
   )
 }
+export const Input = ({ input, meta: { touched, error } }) => {
+  return (
+    <div className={style.input}>
+      <input
+        {...input}
+        className={!touched ? undefined : error ? style.error : undefined}
+      />
+      <h3>{touched && error && <span>{error}</span>}</h3>
+    </div>
+  )
+}
 export const LoginControl = ({ input, meta: { touched, error }, ...props }) => {
   return (
     <div className={style.input}>
